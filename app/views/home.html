@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2 hero-content">
                 <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
-                    {{headerTaglines[0]}} <span class="dev-name">{{yourName}}</span>
+                    Hello, I'm <span class="dev-name">{{yourName}}</span>
                 </h1>
                 <h2 class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">
                     I'm a <span id="typed-text" class="hero-typed"></span>
@@ -53,7 +53,7 @@
                         <i class="fab fa-react"></i>
                     </div>
                     <h3>React Development</h3>
-                    <p>Interactive and responsive user interfaces built with React, Redux, and modern frontend technologies.</p>
+                    <p>Interactive, responsive user interfaces with React, Redux, and modern frontend technologies.</p>
                 </div>
             </div>
         </div>
@@ -93,38 +93,83 @@
     </div>
 </section>
 
-<!-- Featured Projects Section -->
-<section class="featured-projects py-5 bg-light">
+<!-- Featured Projects -->
+<section class="featured-projects py-5">
     <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
         <div class="row">
-            <div class="col-12 text-center mb-5">
-                <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Check out some of my recent work</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 mb-4" ng-repeat="project in featuredProjects" data-aos="fade-up" data-aos-delay="{{$index * 100 + 300}}">
-                <div class="card project-card h-100">
-                    <div class="card-img-container">
-                        <img class="card-img-top" ng-src="{{project.image}}" alt="{{project.title}}">
-                        <div class="card-img-overlay d-flex">
-                            <a href="{{project.demoLink}}" target="_blank" class="btn btn-primary mt-auto mx-auto">View Project</a>
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="app/images/project1.jpg" alt="E-Commerce Platform">
+                    </div>
+                    <span class="project-category">Java</span>
+                    <div class="project-content">
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <p class="project-description">A full-featured e-commerce platform built with Java Spring Boot backend and React frontend.</p>
+                        <div class="project-techs">
+                            <span class="project-tech">Java</span>
+                            <span class="project-tech">Spring Boot</span>
+                            <span class="project-tech">React</span>
+                            <span class="project-tech">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link view-link"><i class="fas fa-eye"></i> View</a>
+                            <a href="#" class="project-link code-link"><i class="fas fa-code"></i> Code</a>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{project.title}}</h5>
-                        <p class="card-text">{{project.description}}</p>
-                        <div class="project-technologies">
-                            <span class="badge" ng-repeat="tech in project.technologies">{{tech}}</span>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="app/images/project2.jpg" alt="Task Management System">
+                    </div>
+                    <span class="project-category">Node.js</span>
+                    <div class="project-content">
+                        <h3 class="project-title">Task Management System</h3>
+                        <p class="project-description">A collaborative task management system with real-time updates using Socket.io.</p>
+                        <div class="project-techs">
+                            <span class="project-tech">Node.js</span>
+                            <span class="project-tech">Express</span>
+                            <span class="project-tech">MongoDB</span>
+                            <span class="project-tech">Socket.io</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link view-link"><i class="fas fa-eye"></i> View</a>
+                            <a href="#" class="project-link code-link"><i class="fas fa-code"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="app/images/project3.jpg" alt="Social Media Dashboard">
+                    </div>
+                    <span class="project-category">React</span>
+                    <div class="project-content">
+                        <h3 class="project-title">Social Media Dashboard</h3>
+                        <p class="project-description">A responsive dashboard for social media analytics with interactive charts and data visualization.</p>
+                        <div class="project-techs">
+                            <span class="project-tech">React</span>
+                            <span class="project-tech">Redux</span>
+                            <span class="project-tech">D3.js</span>
+                            <span class="project-tech">Firebase</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link view-link"><i class="fas fa-eye"></i> View</a>
+                            <a href="#" class="project-link code-link"><i class="fas fa-code"></i> Code</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
-            <div class="col-12 text-center" data-aos="fade-up">
-                <a href="#!/projects" class="btn btn-secondary">View All Projects</a>
-            </div>
+        
+        <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="800">
+            <a href="#!/projects" class="btn btn-primary">View All Projects</a>
         </div>
     </div>
 </section>
@@ -208,22 +253,49 @@
     </div>
 </section>
 
-<!-- Call to Action Section -->
-<section class="cta py-5">
+<!-- Contact Preview -->
+<section class="contact-preview py-5">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <h2 data-aos="fade-up">Let's Work Together</h2>
-                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">Interested in collaborating or have a project in mind? Let's discuss how I can help bring your ideas to reality.</p>
-                <a href="#!/contact" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="400">Get in Touch</a>
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                <h2 class="section-title text-left">Let's Work Together</h2>
+                <p class="lead">Have a project in mind? Let's discuss how I can help you turn your ideas into reality.</p>
+                <p>Whether you need a new web application, a mobile app, or consultation on your existing project, I'm here to help. With expertise in Java, Node.js, and React, I can provide end-to-end solutions for your business needs.</p>
+                <div class="mt-4">
+                    <a href="#!/contact" class="btn btn-primary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="contact-card">
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Email</h4>
+                            <p>youremail@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Phone</h4>
+                            <p>+1 123 456 7890</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Location</h4>
+                            <p>Your City, Country</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
-
-<!-- Initialize Hero Background -->
-<script>
-    angular.element(document).ready(function() {
-        angular.element(document.getElementById('hero')).scope().init3DBackground();
-    });
-</script> 
+</section> 

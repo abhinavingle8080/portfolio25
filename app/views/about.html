@@ -1,60 +1,90 @@
-<!-- Include Header -->
-<div ng-include="'app/components/headers/page-header.html'"></div>
+<!-- Include About Header -->
+<div ng-include="'app/components/headers/about-header.html'"></div>
 
-<!-- About Section -->
-<section class="about-section py-5">
+<!-- About Page Header -->
+<section class="page-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center mb-5">
-                <h1 class="page-title" data-aos="fade-up">About Me</h1>
-                <p class="lead" data-aos="fade-up" data-aos-delay="200">Get to know me better</p>
+            <div class="col-12 text-center">
+                <h1 class="display-4" data-aos="fade-up">About Me</h1>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">Learn more about my background, experience, and passion for software development.</p>
             </div>
         </div>
-        <div class="row align-items-center mb-5">
-            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
-                <div class="about-image">
-                    <img src="app/images/profile.jpg" alt="Profile Photo" class="img-fluid rounded">
+    </div>
+</section>
+
+<!-- About Me Section -->
+<section class="about py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
+                <div class="about-image-container">
+                    <img src="app/images/profile.jpg" alt="Profile Image" class="about-image img-fluid">
                 </div>
             </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <div class="about-content">
-                    <h2>Who Am I?</h2>
-                    <p class="about-text" ng-bind-html="aboutPara"></p>
+            <div class="col-lg-7" data-aos="fade-left">
+                <h2>Who Am I?</h2>
+                <p class="lead about-text">A passionate software developer with expertise in Java, Node.js, and React.</p>
+                <p class="about-text">{{aboutMe.bio}}</p>
+                
+                <div class="row mt-4 mb-4">
+                    <div class="col-md-6">
+                        <ul class="about-info">
+                            <li><strong>Name:</strong> {{yourName}}</li>
+                            <li><strong>Age:</strong> {{calculateAge()}} years</li>
+                            <li><strong>Location:</strong> {{aboutMe.location}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="about-info">
+                            <li><strong>Email:</strong> {{aboutMe.email}}</li>
+                            <li><strong>Phone:</strong> {{aboutMe.phone}}</li>
+                            <li><strong>Freelance:</strong> Available</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="code-snippet" data-aos="zoom-in">
+                    <span class="language">javascript</span>
+                    <pre>
+<span class="code-line"><span class="code-comment">// A bit about my coding philosophy</span></span>
+<span class="code-line"><span class="code-keyword">const</span> <span class="code-function">developer</span> = {</span>
+<span class="code-line">  name: <span class="code-string">"{{yourName}}"</span>,</span>
+<span class="code-line">  expertise: [<span class="code-string">"Java"</span>, <span class="code-string">"Node.js"</span>, <span class="code-string">"React"</span>],</span>
+<span class="code-line">  passions: [<span class="code-string">"Clean Code"</span>, <span class="code-string">"Problem Solving"</span>, <span class="code-string">"Innovation"</span>],</span>
+<span class="code-line">  approach: () => {</span>
+<span class="code-line">    <span class="code-keyword">return</span> <span class="code-string">"I believe in writing clean, efficient, and maintainable code that solves real-world problems."</span>;</span>
+<span class="code-line">  }</span>
+<span class="code-line">};</span>
+                    </pre>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="app/files/resume.pdf" class="btn btn-primary" download><i class="fas fa-download"></i> Download Resume</a>
+                    <a href="#!/contact" class="btn btn-secondary ml-3"><i class="fas fa-envelope"></i> Contact Me</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Experience Section -->
-<section class="experience-section py-5 bg-light">
+<!-- Experience Timeline Section -->
+<section class="experience py-5 bg-light">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center mb-5">
-                <h2 class="section-title" data-aos="fade-up">Work Experience</h2>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">My professional journey</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <div class="timeline">
-                    <div class="timeline-item" ng-repeat="job in workExperience" data-aos="fade-up" data-aos-delay="{{$index * 100}}">
-                        <div class="timeline-badge">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">{{job.position}}</h4>
-                                <h5 class="timeline-company">{{job.company}}</h5>
-                                <span class="timeline-date">{{job.period}}</span>
-                            </div>
-                            <div class="timeline-body">
-                                <p>{{job.description}}</p>
-                                <div class="technologies">
-                                    <span class="badge" ng-repeat="tech in job.technologies">{{tech}}</span>
-                                </div>
-                            </div>
-                        </div>
+        <h2 class="section-title" data-aos="fade-up">Work Experience</h2>
+        
+        <div class="timeline" data-aos="fade-up" data-aos-delay="200">
+            <div class="timeline-container" ng-repeat="job in experiences">
+                <div class="timeline-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="timeline-body">
+                    <h4 class="timeline-title">{{job.position}}</h4>
+                    <h5 class="timeline-subtitle">{{job.company}}</h5>
+                    <p class="timeline-date"><i class="far fa-calendar-alt"></i> {{job.period}}</p>
+                    <p class="timeline-text">{{job.description}}</p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag" ng-repeat="tech in job.technologies">{{tech}}</span>
                     </div>
                 </div>
             </div>
@@ -62,83 +92,164 @@
     </div>
 </section>
 
-<!-- Education Section -->
-<section class="education-section py-5">
+<!-- Education Timeline Section -->
+<section class="education py-5">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center mb-5">
-                <h2 class="section-title" data-aos="fade-up">Education</h2>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">My academic background</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <div class="timeline">
-                    <div class="timeline-item" data-aos="fade-up">
-                        <div class="timeline-badge">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">{{education.degree}}</h4>
-                                <h5 class="timeline-company">{{education.institution}}</h5>
-                                <span class="timeline-date">{{education.period}}</span>
-                            </div>
-                            <div class="timeline-body">
-                                <p>{{education.description}}</p>
-                            </div>
-                        </div>
-                    </div>
+        <h2 class="section-title" data-aos="fade-up">Education</h2>
+        
+        <div class="timeline" data-aos="fade-up" data-aos-delay="200">
+            <div class="timeline-container" ng-repeat="edu in education">
+                <div class="timeline-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="timeline-body">
+                    <h4 class="timeline-title">{{edu.degree}}</h4>
+                    <h5 class="timeline-subtitle">{{edu.institution}}</h5>
+                    <p class="timeline-date"><i class="far fa-calendar-alt"></i> {{edu.period}}</p>
+                    <p class="timeline-text">{{edu.description}}</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Skills Languages Section -->
-<section class="skills-section py-5 bg-light">
+<!-- Personal Interests Section -->
+<section class="interests py-5 bg-light">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center mb-5">
-                <h2 class="section-title" data-aos="fade-up">Language Skills</h2>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Languages I speak</p>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-6 mb-4" ng-repeat="language in languages" data-aos="fade-up" data-aos-delay="{{$index * 100}}">
-                        <div class="language-card">
-                            <div class="language-icon">
-                                <i class="fas fa-language"></i>
-                            </div>
-                            <h4 class="language-name">{{language}}</h4>
-                        </div>
+        <h2 class="section-title" data-aos="fade-up">Personal Interests</h2>
+        
+        <div class="row text-center mt-5">
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
+                    <h5>Coding</h5>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h5>Reading</h5>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-hiking"></i>
+                    </div>
+                    <h5>Hiking</h5>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h5>Photography</h5>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h5>Travel</h5>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-chess"></i>
+                    </div>
+                    <h5>Chess</h5>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="700">
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h5>Music</h5>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="800">
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h5>Fitness</h5>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Download Resume Section -->
-<section class="resume-section py-5">
+<!-- Testimonials Section -->
+<section class="testimonials py-5">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-title" data-aos="fade-up">Resume</h2>
-                <p class="mb-4" data-aos="fade-up" data-aos-delay="200">Want to know more about my qualifications? Download my resume.</p>
-                <a href="app/assets/resume.pdf" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="400" target="_blank">
-                    <i class="fas fa-download me-2"></i> Download Resume
-                </a>
+        <h2 class="section-title" data-aos="fade-up">What People Say</h2>
+        
+        <div class="row mt-5">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"An exceptional developer who consistently delivers high-quality code. Their expertise in Java and React helped our project succeed beyond expectations."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="app/images/testimonial1.jpg" alt="Testimonial 1">
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>John Smith</h5>
+                            <p>CTO, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Working with them was a pleasure. Their Node.js skills are impressive, and they're great at solving complex problems with elegant solutions."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="app/images/testimonial2.jpg" alt="Testimonial 2">
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Sarah Johnson</h5>
+                            <p>Project Manager, WebSolutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"A truly talented developer who brings both technical expertise and creative thinking to every project. Their React applications are both beautiful and functional."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="app/images/testimonial3.jpg" alt="Testimonial 3">
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Michael Lee</h5>
+                            <p>Lead Developer, CreativeApps</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
-
-<!-- Initialize Timeline Animation -->
-<script>
-    angular.element(document).ready(function() {
-        // Initialize any timeline animations
-    });
-</script> 
+</section> 
