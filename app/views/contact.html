@@ -1,0 +1,218 @@
+<!-- Include Contact Header -->
+<div ng-include="'app/components/headers/contact-header.html'"></div>
+
+<!-- Contact Page Header -->
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4" data-aos="fade-up">Contact Me</h1>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">Get in touch for project inquiries, collaboration opportunities, or just to say hello.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Information -->
+            <div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-right">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Email</h4>
+                            <p>{{contactInfo.email}}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Phone</h4>
+                            <p>{{contactInfo.phone}}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Location</h4>
+                            <p>{{contactInfo.location}}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-links-lg mt-4">
+                    <h4>Connect With Me</h4>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="social-link" target="_blank" data-aos="zoom-in" data-aos-delay="100">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" target="_blank" data-aos="zoom-in" data-aos-delay="200">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link" target="_blank" data-aos="zoom-in" data-aos-delay="300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" target="_blank" data-aos="zoom-in" data-aos-delay="400">
+                            <i class="fab fa-medium"></i>
+                        </a>
+                        <a href="#" class="social-link" target="_blank" data-aos="zoom-in" data-aos-delay="500">
+                            <i class="fab fa-stack-overflow"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="availability-status mt-5">
+                    <h4>Current Availability</h4>
+                    <div class="availability-indicator available">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Available for freelance projects</span>
+                    </div>
+                    <p class="availability-message mt-2">I'm currently accepting new projects and would love to hear about yours. Let's schedule a call and discuss how I can help.</p>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="col-lg-8" data-aos="fade-left">
+                <div class="contact-form">
+                    <h3 class="mb-4">Send Me a Message</h3>
+                    
+                    <div class="alert alert-success" ng-if="success">
+                        <i class="fas fa-check-circle mr-2"></i> Your message has been sent successfully. I'll get back to you as soon as possible!
+                    </div>
+                    
+                    <form name="contactForm" ng-submit="submitForm()" novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Your Name</label>
+                                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" ng-model="contactForm.name" required ng-class="{'is-invalid': contactForm.name.$invalid && contactForm.name.$touched}">
+                                    <div class="invalid-feedback" ng-show="contactForm.name.$invalid && contactForm.name.$touched">
+                                        Please enter your name.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Your Email</label>
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" ng-model="contactForm.email" required ng-class="{'is-invalid': contactForm.email.$invalid && contactForm.email.$touched}">
+                                    <div class="invalid-feedback" ng-show="contactForm.email.$invalid && contactForm.email.$touched">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Enter subject" ng-model="contactForm.subject" required ng-class="{'is-invalid': contactForm.subject.$invalid && contactForm.subject.$touched}">
+                            <div class="invalid-feedback" ng-show="contactForm.subject.$invalid && contactForm.subject.$touched">
+                                Please enter a subject.
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="form-control" rows="5" placeholder="Enter your message" ng-model="contactForm.message" required ng-class="{'is-invalid': contactForm.message.$invalid && contactForm.message.$touched}"></textarea>
+                            <div class="invalid-feedback" ng-show="contactForm.message.$invalid && contactForm.message.$touched">
+                                Please enter your message.
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-send" ng-disabled="contactForm.$invalid || loading">
+                            <span ng-if="!loading">Send Message</span>
+                            <span ng-if="loading"><i class="fas fa-spinner fa-spin mr-2"></i> Sending...</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map Section -->
+<section class="map-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="map-container" data-aos="fade-up">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3060153957!2d-74.25987368715491!3d40.69767006766623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1645689961262!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section py-5">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
+        
+        <div class="row mt-5">
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-item">
+                    <h4 class="faq-question">What is your typical process for working with a new client?</h4>
+                    <p class="faq-answer">I start with a discovery call to understand your needs, followed by a proposal outlining scope, timeline, and cost. Once approved, I create a detailed plan and begin development with regular updates and feedback sessions.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="faq-item">
+                    <h4 class="faq-question">How do you charge for your services?</h4>
+                    <p class="faq-answer">I offer both project-based and hourly pricing depending on the scope and requirements. For most projects, I prefer a fixed-price model with clearly defined deliverables and milestones.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="faq-item">
+                    <h4 class="faq-question">Can you work with an existing development team?</h4>
+                    <p class="faq-answer">Absolutely! I have experience collaborating with in-house teams and can adapt to your existing workflows, version control systems, and coding standards to ensure seamless integration.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="faq-item">
+                    <h4 class="faq-question">Do you provide ongoing maintenance and support?</h4>
+                    <p class="faq-answer">Yes, I offer maintenance and support packages to ensure your application runs smoothly after launch. This includes bug fixes, security updates, and minor enhancements as needed.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="faq-item">
+                    <h4 class="faq-question">What is your availability for new projects?</h4>
+                    <p class="faq-answer">My availability varies throughout the year. Currently, I'm accepting new projects with start dates in the next 2-4 weeks. For urgent needs, I may be able to accommodate shorter timelines.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="faq-item">
+                    <h4 class="faq-question">Do you sign NDAs or confidentiality agreements?</h4>
+                    <p class="faq-answer">Yes, I'm happy to sign NDAs before discussing sensitive project details. Client confidentiality is extremely important to me, and I take it very seriously.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="contact-cta py-5 bg-primary text-light text-center">
+    <div class="container">
+        <h2 data-aos="fade-up">Ready to start your project?</h2>
+        <p class="lead" data-aos="fade-up" data-aos-delay="200">Contact me today and let's create something amazing together!</p>
+        <div class="cta-buttons mt-4" data-aos="fade-up" data-aos-delay="400">
+            <a href="mailto:youremail@example.com" class="btn btn-light btn-lg mr-3"><i class="fas fa-envelope mr-2"></i> Email Me</a>
+            <a href="tel:+1234567890" class="btn btn-outline-light btn-lg"><i class="fas fa-phone-alt mr-2"></i> Call Me</a>
+        </div>
+    </div>
+</section> 
