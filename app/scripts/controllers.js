@@ -3,15 +3,8 @@
 /**
  * Main Controller
  */
-app.controller('MainController', ['$scope', '$window', 'PortfolioDataService', function($scope, $window, PortfolioDataService) {
+app.controller('MainController', ['$scope', '$window', function($scope, $window) {
     // Main controller functionality
-    
-    // Set personal information from the data service
-    $scope.yourName = PortfolioDataService.personalInfo.name;
-    $scope.currentYear = new Date().getFullYear();
-    
-    // Set social links
-    $scope.socialLinks = PortfolioDataService.socialLinks;
     
     // Scroll to top when navigating to a new page
     $scope.$on('$routeChangeSuccess', function() {
@@ -22,12 +15,7 @@ app.controller('MainController', ['$scope', '$window', 'PortfolioDataService', f
 /**
  * Home Controller
  */
-app.controller('HomeController', ['$scope', '$timeout', 'PortfolioDataService', function($scope, $timeout, PortfolioDataService) {
-    // Set personal data
-    $scope.yourName = PortfolioDataService.personalInfo.name;
-    $scope.headerTaglines = PortfolioDataService.personalInfo.headerTaglines;
-    $scope.featuredProjects = PortfolioDataService.projects.filter(project => project.featured);
-    
+app.controller('HomeController', ['$scope', '$timeout', function($scope, $timeout) {
     // Initialize typed.js for animated typing
     $timeout(function() {
         var typed = new Typed('#typed-text', {
@@ -174,153 +162,245 @@ app.controller('HomeController', ['$scope', '$timeout', 'PortfolioDataService', 
 /**
  * About Controller
  */
-app.controller('AboutController', ['$scope', 'PortfolioDataService', function($scope, PortfolioDataService) {
-    // Load about data from portfolio service
-    $scope.aboutPara = PortfolioDataService.personalInfo.aboutPara;
-    $scope.workExperience = PortfolioDataService.workExperience;
-    $scope.education = PortfolioDataService.education;
-    $scope.skills = PortfolioDataService.skills;
-    
-    // Initialize timeline animation
-    $scope.initTimeline = function() {
-        // ... existing code ...
+app.controller('AboutController', ['$scope', function($scope) {
+    // Personal information
+    $scope.aboutMe = {
+        birthYear: 1990, // Change this to your birth year
+        location: 'Your Location',
+        email: 'youremail@example.com',
+        phone: '+1 123 456 7890',
+        bio: 'I am a passionate software developer with expertise in Java, Node.js, and React. With years of experience in the industry, I have worked on various challenging projects, solving complex problems and delivering high-quality solutions.'
     };
+    
+    // Calculate age dynamically
+    $scope.calculateAge = function() {
+        var today = new Date();
+        var birthYear = $scope.aboutMe.birthYear;
+        return today.getFullYear() - birthYear;
+    };
+    
+    // Experience timeline data
+    $scope.experiences = [
+        {
+            position: 'Senior Software Developer',
+            company: 'Tech Company Name',
+            period: '2021 - Present',
+            description: 'Leading the development of enterprise-level applications using Java, Spring Boot, and React. Mentoring junior developers and participating in architecture design.',
+            technologies: ['Java', 'Spring Boot', 'React', 'AWS', 'MongoDB']
+        },
+        {
+            position: 'Full Stack Developer',
+            company: 'Another Company Name',
+            period: '2018 - 2021',
+            description: 'Developed and maintained web applications using Node.js and React. Collaborated with UX/UI designers to implement responsive and intuitive interfaces.',
+            technologies: ['Node.js', 'Express', 'React', 'PostgreSQL', 'Docker']
+        },
+        {
+            position: 'Junior Developer',
+            company: 'First Company Name',
+            period: '2016 - 2018',
+            description: 'Started as a Java developer working on backend services. Gradually expanded skills to include frontend development with JavaScript and React.',
+            technologies: ['Java', 'JavaScript', 'React', 'MySQL']
+        }
+    ];
+    
+    // Education timeline data
+    $scope.education = [
+        {
+            degree: 'Master of Science in Computer Science',
+            institution: 'University Name',
+            period: '2014 - 2016',
+            description: 'Specialized in Software Engineering with focus on distributed systems and cloud computing.'
+        },
+        {
+            degree: 'Bachelor of Science in Computer Science',
+            institution: 'University Name',
+            period: '2010 - 2014',
+            description: 'Fundamentals of computer science, algorithms, data structures, and software development.'
+        }
+    ];
 }]);
 
 /**
  * Skills Controller
  */
-app.controller('SkillsController', ['$scope', 'PortfolioDataService', function($scope, PortfolioDataService) {
-    // Load skills from the portfolio data service
-    $scope.languages = PortfolioDataService.skills.languages;
-    $scope.frameworks = PortfolioDataService.skills.frameworks;
-    $scope.others = PortfolioDataService.skills.others;
-    
-    // Programming languages with proficiency
-    $scope.programmingSkills = [
-        { name: 'Java', level: 90 },
-        { name: 'JavaScript', level: 85 },
-        { name: 'TypeScript', level: 80 },
-        { name: 'HTML/CSS', level: 90 },
-        { name: 'SQL', level: 85 },
-        { name: 'Python', level: 70 },
-        { name: 'C/C++', level: 60 }
+app.controller('SkillsController', ['$scope', '$timeout', function($scope, $timeout) {
+    // Skills data by category
+    $scope.skillCategories = [
+        {
+            name: 'Backend Development',
+            skills: [
+                { name: 'Java', level: 95, icon: 'fab fa-java' },
+                { name: 'Spring Boot', level: 90, icon: 'fas fa-leaf' },
+                { name: 'Node.js', level: 90, icon: 'fab fa-node-js' },
+                { name: 'Express', level: 85, icon: 'fab fa-node' },
+                { name: 'Python', level: 75, icon: 'fab fa-python' },
+                { name: 'PHP', level: 65, icon: 'fab fa-php' }
+            ]
+        },
+        {
+            name: 'Frontend Development',
+            skills: [
+                { name: 'React', level: 90, icon: 'fab fa-react' },
+                { name: 'JavaScript', level: 95, icon: 'fab fa-js' },
+                { name: 'HTML5', level: 90, icon: 'fab fa-html5' },
+                { name: 'CSS3', level: 85, icon: 'fab fa-css3-alt' },
+                { name: 'Angular', level: 70, icon: 'fab fa-angular' },
+                { name: 'Vue.js', level: 65, icon: 'fab fa-vuejs' }
+            ]
+        },
+        {
+            name: 'Database & DevOps',
+            skills: [
+                { name: 'MySQL', level: 85, icon: 'fas fa-database' },
+                { name: 'MongoDB', level: 80, icon: 'fas fa-leaf' },
+                { name: 'PostgreSQL', level: 75, icon: 'fas fa-database' },
+                { name: 'Docker', level: 80, icon: 'fab fa-docker' },
+                { name: 'Kubernetes', level: 70, icon: 'fas fa-dharmachakra' },
+                { name: 'AWS', level: 75, icon: 'fab fa-aws' }
+            ]
+        }
     ];
     
-    // Framework skills
-    $scope.frameworkSkills = [
-        { name: 'Spring Boot', level: 90 },
-        { name: 'React', level: 85 },
-        { name: 'Node.js', level: 90 },
-        { name: 'Express', level: 85 },
-        { name: 'Angular', level: 70 },
-        { name: 'Vue.js', level: 65 },
-        { name: 'Django', level: 60 }
-    ];
-    
-    // Tool & platform skills
-    $scope.toolSkills = [
-        { name: 'Git', level: 95 },
-        { name: 'Docker', level: 80 },
-        { name: 'Kubernetes', level: 70 },
-        { name: 'AWS', level: 75 },
-        { name: 'Databases', level: 85 },
-        { name: 'RESTful APIs', level: 90 },
-        { name: 'CI/CD', level: 80 }
-    ];
-    
-    // Initialize skills animations
-    $scope.initSkillBars = function() {
-        // ... existing code ...
+    // Animate skill progress bars
+    $scope.animateSkills = function() {
+        $timeout(function() {
+            angular.forEach(document.querySelectorAll('.skill-progress'), function(element, index) {
+                var level = element.getAttribute('data-level');
+                $timeout(function() {
+                    element.style.width = level + '%';
+                }, 100 * index);
+            });
+        }, 500);
     };
 }]);
 
 /**
  * Projects Controller
  */
-app.controller('ProjectsController', ['$scope', '$timeout', 'PortfolioDataService', function($scope, $timeout, PortfolioDataService) {
-    // Load projects from PortfolioDataService
-    $scope.projects = PortfolioDataService.projects;
+app.controller('ProjectsController', ['$scope', function($scope) {
+    // Filter categories
+    $scope.filters = ['All', 'Java', 'Node.js', 'React', 'Mobile', 'Other'];
+    $scope.activeFilter = 'All';
     
-    // Categories for filtering
-    $scope.categories = ['All'];
+    // Set active filter
+    $scope.setFilter = function(filter) {
+        $scope.activeFilter = filter;
+    };
     
-    // Create unique categories
-    PortfolioDataService.projects.forEach(function(project) {
-        if ($scope.categories.indexOf(project.category) === -1) {
-            $scope.categories.push(project.category);
+    // Check if project should be visible based on filter
+    $scope.isVisible = function(project) {
+        if ($scope.activeFilter === 'All') {
+            return true;
         }
-    });
+        return project.technologies.indexOf($scope.activeFilter) !== -1;
+    };
     
-    // Currently selected category
-    $scope.selectedCategory = 'All';
-    
-    // Filter projects by category
-    $scope.filterProjects = function() {
-        if ($scope.selectedCategory === 'All') {
-            return $scope.projects;
-        } else {
-            return $scope.projects.filter(function(project) {
-                return project.category === $scope.selectedCategory;
-            });
+    // Projects data
+    $scope.projects = [
+        {
+            title: 'E-Commerce Platform',
+            category: 'Java',
+            image: 'app/images/project1.jpg',
+            description: 'A full-featured e-commerce platform built with Java Spring Boot backend and React frontend.',
+            technologies: ['Java', 'Spring Boot', 'React', 'MySQL', 'AWS'],
+            demoLink: '#',
+            codeLink: '#'
+        },
+        {
+            title: 'Task Management System',
+            category: 'Node.js',
+            image: 'app/images/project2.jpg',
+            description: 'A collaborative task management system with real-time updates using Socket.io.',
+            technologies: ['Node.js', 'Express', 'MongoDB', 'Socket.io', 'React'],
+            demoLink: '#',
+            codeLink: '#'
+        },
+        {
+            title: 'Social Media Dashboard',
+            category: 'React',
+            image: 'app/images/project3.jpg',
+            description: 'A responsive dashboard for social media analytics with interactive charts and data visualization.',
+            technologies: ['React', 'Redux', 'D3.js', 'Firebase'],
+            demoLink: '#',
+            codeLink: '#'
+        },
+        {
+            title: 'Mobile Banking App',
+            category: 'Mobile',
+            image: 'app/images/project4.jpg',
+            description: 'A secure mobile banking application with biometric authentication and transaction tracking.',
+            technologies: ['Java', 'Android', 'Spring Boot', 'PostgreSQL'],
+            demoLink: '#',
+            codeLink: '#'
+        },
+        {
+            title: 'Content Management System',
+            category: 'Node.js',
+            image: 'app/images/project5.jpg',
+            description: 'A flexible and extensible CMS with a user-friendly admin interface and customizable templates.',
+            technologies: ['Node.js', 'Express', 'MongoDB', 'Handlebars'],
+            demoLink: '#',
+            codeLink: '#'
+        },
+        {
+            title: 'Weather Forecast App',
+            category: 'React',
+            image: 'app/images/project6.jpg',
+            description: 'A weather forecast application with location-based data and interactive maps.',
+            technologies: ['React', 'Node.js', 'OpenWeatherMap API', 'Google Maps API'],
+            demoLink: '#',
+            codeLink: '#'
         }
-    };
-    
-    // Change category
-    $scope.setCategory = function(category) {
-        $scope.selectedCategory = category;
-    };
-    
-    // Isotope initialization
-    $scope.initIsotope = function() {
-        // ... existing code ...
-    };
+    ];
 }]);
 
 /**
  * Contact Controller
  */
-app.controller('ContactController', ['$scope', '$timeout', 'PortfolioDataService', function($scope, $timeout, PortfolioDataService) {
-    // Personal contact information
-    $scope.contactInfo = {
-        email: 'abhinavingle8080@gmail.com',
-        phone: '+91 XXX XXX XXXX',
-        location: 'Nagpur, India'
+app.controller('ContactController', ['$scope', '$window', '$timeout', function($scope, $window, $timeout) {
+    // Initialize contact form
+    $scope.contactForm = {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
     };
     
-    // Social links from PortfolioDataService
-    $scope.socialLinks = PortfolioDataService.socialLinks;
-    
-    // Contact form submission
-    $scope.formData = {};
-    $scope.formSubmitted = false;
-    $scope.formSuccess = false;
-    $scope.formError = false;
-    
+    // Form submission
     $scope.submitForm = function() {
-        // Show loading state
-        $scope.submitting = true;
+        if ($scope.contactForm.$invalid) {
+            // Form is invalid
+            return;
+        }
         
-        // Simulate form submission (replace with actual API call)
+        // You would normally send the form data to your backend here
+        // This is just a simulation for demo purposes
+        $scope.loading = true;
+        
         $timeout(function() {
-            $scope.submitting = false;
-            $scope.formSubmitted = true;
-            $scope.formSuccess = true;
+            $scope.loading = false;
+            $scope.success = true;
             
-            // Reset form
-            $scope.formData = {};
-            $scope.contactForm.$setPristine();
-            $scope.contactForm.$setUntouched();
+            // Reset form after successful submission
+            $scope.contactForm = {
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            };
             
-            // Reset status after delay
+            // Clear success message after 5 seconds
             $timeout(function() {
-                $scope.formSubmitted = false;
+                $scope.success = false;
             }, 5000);
         }, 1500);
     };
     
-    // Initialize map
-    $scope.initMap = function() {
-        // ... existing code ...
+    // Contact information
+    $scope.contactInfo = {
+        email: 'youremail@example.com',
+        phone: '+1 123 456 7890',
+        location: 'Your City, Country'
     };
 }]); 

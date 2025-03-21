@@ -1,14 +1,12 @@
 'use strict';
 
 /**
- * Angular Application Configuration
+ * Creative Portfolio AngularJS Application
  */
 var app = angular.module('portfolioApp', ['ngRoute']);
 
-/**
- * Configure routes
- */
-app.config(['$routeProvider', function($routeProvider) {
+// Configure routes
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'app/views/home.html',
@@ -33,24 +31,35 @@ app.config(['$routeProvider', function($routeProvider) {
         .otherwise({
             redirectTo: '/'
         });
+    
+    // Use HTML5 history API for clean URLs (without #)
+    $locationProvider.html5Mode(false);
+    $locationProvider.hashPrefix('!');
 }]);
 
-/**
- * Run block - executes on application initialization
- */
-app.run(['$rootScope', 'ThemeService', function($rootScope, ThemeService) {
-    // Initialize theme
-    ThemeService.initTheme();
+// Run block for initialization
+app.run(['$rootScope', function($rootScope) {
+    // Set your name here
+    $rootScope.yourName = 'Your Name';
+    $rootScope.currentYear = new Date().getFullYear();
     
-    // Set global variables
-    $rootScope.appName = 'Developer Portfolio';
-    
-    // Initialize AOS animations
-    document.addEventListener('DOMContentLoaded', function() {
+    // Initialize AOS animation library
+    angular.element(document).ready(function() {
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
-            once: true
+            once: true,
+            offset: 50
         });
+    });
+    
+    // Handle scroll event for navbar
+    angular.element(window).bind('scroll', function() {
+        if (this.pageYOffset > 50) {
+            $rootScope.scrolled = true;
+        } else {
+            $rootScope.scrolled = false;
+        }
+        $rootScope.$apply();
     });
 }]); 
