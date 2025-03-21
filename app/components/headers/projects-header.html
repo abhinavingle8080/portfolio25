@@ -1,0 +1,47 @@
+<!-- Projects Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" ng-class="{'navbar-scrolled': scrolled}">
+    <div class="container">
+        <a class="navbar-brand" href="#!">
+            <span class="dev-name">{{yourName}}</span>
+            <span class="dev-title">Portfolio</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#!">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/skills">Skills</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#!/projects">Projects <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/contact">Contact</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-filter"></i> Filter
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="projectsDropdown">
+                        <a class="dropdown-item" href="#!/projects#all">All Projects</a>
+                        <a class="dropdown-item" href="#!/projects#java">Java</a>
+                        <a class="dropdown-item" href="#!/projects#node">Node.js</a>
+                        <a class="dropdown-item" href="#!/projects#react">React</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary btn-sm" href="https://github.com/yourusername" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav> 

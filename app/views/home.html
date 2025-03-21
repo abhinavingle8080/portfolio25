@@ -1,0 +1,229 @@
+<!-- Include Home Header -->
+<div ng-include="'app/components/headers/home-header.html'"></div>
+
+<!-- Home View -->
+<section class="hero" id="hero">
+    <div id="hero-bg" class="hero-background"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 hero-content">
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
+                    {{headerTaglines[0]}} <span class="dev-name">{{yourName}}</span>
+                </h1>
+                <h2 class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">
+                    I'm a <span id="typed-text" class="hero-typed"></span>
+                </h2>
+                <p class="lead" data-aos="fade-up" data-aos-delay="600">
+                    Creating elegant solutions to complex problems with clean, efficient code.
+                </p>
+                <div class="hero-cta" data-aos="fade-up" data-aos-delay="800">
+                    <a href="#!/projects" class="btn btn-primary">View Projects</a>
+                    <a href="#!/contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Skills Section -->
+<section class="featured-skills py-5">
+    <div class="container">
+        <div class="row text-center" data-aos="fade-up">
+            <div class="col-md-4 mb-4 mb-md-0">
+                <div class="featured-skill-item">
+                    <div class="icon-container">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <h3>Java Development</h3>
+                    <p>Enterprise applications, microservices, and robust backend systems built with Java and Spring Boot.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+                <div class="featured-skill-item">
+                    <div class="icon-container">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h3>Node.js Development</h3>
+                    <p>Scalable, high-performance web applications and APIs using Node.js, Express, and modern JavaScript.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="featured-skill-item">
+                    <div class="icon-container">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3>React Development</h3>
+                    <p>Interactive and responsive user interfaces built with React, Redux, and modern frontend technologies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Me Preview -->
+<section class="about-preview py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="terminal-button red"></span>
+                            <span class="terminal-button yellow"></span>
+                            <span class="terminal-button green"></span>
+                        </div>
+                        <div class="terminal-title">developer_profile.sh</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div terminal-text text="Hello, I'm a passionate software developer with expertise in Java, Node.js, and React." prompt="$"></div>
+                        <div terminal-text text="I build enterprise applications, web services, and interactive UIs." prompt="$" start-delay="2000"></div>
+                        <div terminal-text text="Let's create something amazing together!" prompt="$" start-delay="4000"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <h2 class="section-title text-left">About Me</h2>
+                <p class="lead">A passionate software developer specializing in Java, Node.js, and React with experience building enterprise-level applications.</p>
+                <p>With a strong foundation in computer science and years of practical experience, I've developed a knack for creating clean, efficient solutions to complex problems. My approach combines technical expertise with a deep understanding of user needs.</p>
+                <div class="mt-4">
+                    <a href="#!/about" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="featured-projects py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Check out some of my recent work</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4" ng-repeat="project in featuredProjects" data-aos="fade-up" data-aos-delay="{{$index * 100 + 300}}">
+                <div class="card project-card h-100">
+                    <div class="card-img-container">
+                        <img class="card-img-top" ng-src="{{project.image}}" alt="{{project.title}}">
+                        <div class="card-img-overlay d-flex">
+                            <a href="{{project.demoLink}}" target="_blank" class="btn btn-primary mt-auto mx-auto">View Project</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{project.title}}</h5>
+                        <p class="card-text">{{project.description}}</p>
+                        <div class="project-technologies">
+                            <span class="badge" ng-repeat="tech in project.technologies">{{tech}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 text-center" data-aos="fade-up">
+                <a href="#!/projects" class="btn btn-secondary">View All Projects</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Preview -->
+<section class="skills-preview py-5 bg-dark text-light">
+    <div class="container">
+        <h2 class="section-title text-light" data-aos="fade-up">Technical Skills</h2>
+        
+        <div class="row mt-5">
+            <div class="col-md-6" data-aos="fade-right">
+                <h3 class="category-title">Backend Development</h3>
+                <div class="skill-bar mb-4">
+                    <div class="d-flex justify-content-between">
+                        <span class="skill-name">Java</span>
+                        <span class="skill-percentage">95%</span>
+                    </div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="95"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-bar mb-4">
+                    <div class="d-flex justify-content-between">
+                        <span class="skill-name">Node.js</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="90"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-bar mb-4">
+                    <div class="d-flex justify-content-between">
+                        <span class="skill-name">Spring Boot</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="90"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6" data-aos="fade-left">
+                <h3 class="category-title">Frontend Development</h3>
+                <div class="skill-bar mb-4">
+                    <div class="d-flex justify-content-between">
+                        <span class="skill-name">React</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="90"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-bar mb-4">
+                    <div class="d-flex justify-content-between">
+                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-percentage">95%</span>
+                    </div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="95"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-bar mb-4">
+                    <div class="d-flex justify-content-between">
+                        <span class="skill-name">HTML/CSS</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="90"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="#!/skills" class="btn btn-primary">View All Skills</a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <h2 data-aos="fade-up">Let's Work Together</h2>
+                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">Interested in collaborating or have a project in mind? Let's discuss how I can help bring your ideas to reality.</p>
+                <a href="#!/contact" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="400">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Initialize Hero Background -->
+<script>
+    angular.element(document).ready(function() {
+        angular.element(document.getElementById('hero')).scope().init3DBackground();
+    });
+</script> 

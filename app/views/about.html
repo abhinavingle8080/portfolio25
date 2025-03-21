@@ -1,0 +1,144 @@
+<!-- Include Header -->
+<div ng-include="'app/components/headers/page-header.html'"></div>
+
+<!-- About Section -->
+<section class="about-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h1 class="page-title" data-aos="fade-up">About Me</h1>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">Get to know me better</p>
+            </div>
+        </div>
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                <div class="about-image">
+                    <img src="app/images/profile.jpg" alt="Profile Photo" class="img-fluid rounded">
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="about-content">
+                    <h2>Who Am I?</h2>
+                    <p class="about-text" ng-bind-html="aboutPara"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section class="experience-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Work Experience</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">My professional journey</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="timeline">
+                    <div class="timeline-item" ng-repeat="job in workExperience" data-aos="fade-up" data-aos-delay="{{$index * 100}}">
+                        <div class="timeline-badge">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">{{job.position}}</h4>
+                                <h5 class="timeline-company">{{job.company}}</h5>
+                                <span class="timeline-date">{{job.period}}</span>
+                            </div>
+                            <div class="timeline-body">
+                                <p>{{job.description}}</p>
+                                <div class="technologies">
+                                    <span class="badge" ng-repeat="tech in job.technologies">{{tech}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education Section -->
+<section class="education-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Education</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">My academic background</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="timeline">
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-badge">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">{{education.degree}}</h4>
+                                <h5 class="timeline-company">{{education.institution}}</h5>
+                                <span class="timeline-date">{{education.period}}</span>
+                            </div>
+                            <div class="timeline-body">
+                                <p>{{education.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Languages Section -->
+<section class="skills-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Language Skills</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Languages I speak</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6 mb-4" ng-repeat="language in languages" data-aos="fade-up" data-aos-delay="{{$index * 100}}">
+                        <div class="language-card">
+                            <div class="language-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <h4 class="language-name">{{language}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Download Resume Section -->
+<section class="resume-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-title" data-aos="fade-up">Resume</h2>
+                <p class="mb-4" data-aos="fade-up" data-aos-delay="200">Want to know more about my qualifications? Download my resume.</p>
+                <a href="app/assets/resume.pdf" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="400" target="_blank">
+                    <i class="fas fa-download me-2"></i> Download Resume
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Initialize Timeline Animation -->
+<script>
+    angular.element(document).ready(function() {
+        // Initialize any timeline animations
+    });
+</script> 
