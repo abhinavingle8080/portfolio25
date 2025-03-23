@@ -366,4 +366,15 @@ app.service('UtilityService', ['$window', function($window) {
             timeout = setTimeout(later, wait);
         };
     };
+}]);
+
+// Portfolio Service - Uses data from PortfolioDataService for easy access in controllers
+app.service('portfolioService', ['PortfolioDataService', function(PortfolioDataService) {
+    var service = this;
+    
+    // Projects data
+    service.projects = PortfolioDataService.projects;
+    
+    // Other portfolio data can be added here
+    service.personalInfo = PortfolioDataService.personalInfo;
 }]); 

@@ -73,37 +73,37 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
         {
             title: 'Color Pencil',
             category: 'Full Stack',
-            image: 'app/images/projects/colorpencil.jpg',
+            image: 'app/images/projects/colorpencil.svg',
             description: 'Node APIs + Admin + Parent & Student Panel',
             longDescription: 'Comprehensive education platform with APIs, admin panel, and interfaces for parents and students.',
             technologies: ['Node.js', 'Express', 'React', 'MySQL'],
-            demoLink: 'http://chetanverma.com/',
+            demoLink: 'https://colorpencildev.ilserver.cloud/',
             featured: true
         },
         {
             title: 'Fitness maa',
             category: 'Mobile',
-            image: 'app/images/projects/fitness-maa.jpg',
+            image: 'app/images/projects/fitness-maa.svg',
             description: 'Android + iOS Development',
             longDescription: 'Fitness application developed for both Android and iOS platforms.',
-            technologies: ['Java', 'Swift', 'React Native'],
+            technologies: ['Node.js', 'MySQL', 'Flutter'],
             demoLink: 'https://play.google.com/store/apps/details?id=com.ilomatech.fitnessmaaadmin&hl=en_US',
             featured: true
         },
         {
             title: 'Ease Your Shoot',
             category: 'Web',
-            image: 'app/images/projects/eys-loader.jpg',
+            image: 'app/images/projects/eys-loader.gif',
             description: 'React + Node + Express + MySQL',
             longDescription: 'Comprehensive platform for photographers to manage their clients and shoots.',
             technologies: ['React', 'Node.js', 'Express', 'MySQL'],
-            demoLink: 'https://easeyourshoot.com/',
+            demoLink: 'https://www.easeyourshootdev.ilserver.cloud/',
             featured: true
         },
         {
             title: 'Generic API',
             category: 'Backend',
-            image: 'app/images/projects/iloma.jpg',
+            image: 'app/images/projects/iloma.svg',
             description: 'Node + Express + MySQL',
             longDescription: 'Reusable API framework for rapid application development.',
             technologies: ['Node.js', 'Express', 'MySQL'],
@@ -113,7 +113,7 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
         {
             title: 'Salt',
             category: 'Web',
-            image: 'app/images/projects/salt.jpg',
+            image: 'app/images/projects/salt.svg',
             description: 'React + Node + Express + MySQL',
             longDescription: 'Full-stack web application for the Salt platform.',
             technologies: ['React', 'Node.js', 'Express', 'MySQL'],
@@ -123,7 +123,7 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
         {
             title: 'iLrestro App',
             category: 'Web',
-            image: 'app/images/projects/iloma.jpg',
+            image: 'app/images/projects/iloma.svg',
             description: 'React + Node + Express + MySQL',
             longDescription: 'Restaurant management application with order processing and inventory tracking.',
             technologies: ['React', 'Node.js', 'Express', 'MySQL'],
@@ -133,7 +133,7 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
         {
             title: 'BhimSup App',
             category: 'Web',
-            image: 'app/images/projects/bhimsup.jpg',
+            image: 'app/images/projects/bhimsup.svg',
             description: 'React + Node + Express + MySQL',
             longDescription: 'Support application for BHIM UPI users with customer service integration.',
             technologies: ['React', 'Node.js', 'Express', 'MySQL'],
@@ -143,7 +143,7 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
         {
             title: 'Buty Public School',
             category: 'Web',
-            image: 'app/images/projects/buty.jpg',
+            image: 'app/images/projects/buty.svg',
             description: 'React + Node + Express + MySQL',
             longDescription: 'School management system for Buty Public School with student and teacher portals.',
             technologies: ['React', 'Node.js', 'Express', 'MySQL'],
