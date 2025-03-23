@@ -1,0 +1,43 @@
+<!-- Include Blog Header -->
+<div ng-include="'app/components/headers/blog-header.html'"></div>
+
+<!-- Blog Detail Header -->
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4" data-aos="fade-up">{{post.title}}</h1>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">{{post.tagline}}</p>
+                <p class="post-date" data-aos="fade-up" data-aos-delay="300">
+                    <i class="far fa-calendar-alt"></i> {{post.date}}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Content -->
+<section class="blog-content py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8" data-aos="fade-up">
+                <div class="blog-featured-image mb-4">
+                    <img ng-src="{{post.image}}" alt="{{post.title}}" class="img-fluid rounded">
+                </div>
+                
+                <div class="blog-text markdown-content">
+                    <div ng-bind-html="post.content | markdown"></div>
+                </div>
+                
+                <div class="blog-navigation mt-5">
+                    <a href="#!/blog" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Include Footer -->
+<div ng-include="'app/components/footer.html'"></div> 

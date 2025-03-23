@@ -29,25 +29,47 @@ app.directive('animateOnScroll', ['$window', function($window) {
 }]);
 
 // Terminal text effect directive
-app.directive('terminalText', ['$timeout', function($timeout) {
+app.directive('terminalText', ['$timeout', '$rootScope', function($timeout, $rootScope) {
     return {
         restrict: 'A',
         scope: {
             text: '@',
             prompt: '@',
             typingSpeed: '@',
-            startDelay: '@'
+            startDelay: '@',
+            lineIndex: '@'
         },
         link: function(scope, element, attrs) {
             var text = scope.text || 'Hello, World!';
             var prompt = scope.prompt || '>';
             var typingSpeed = parseInt(scope.typingSpeed) || 50;
             var startDelay = parseInt(scope.startDelay) || 1000;
+            var lineIndex = parseInt(scope.lineIndex) || 0;
+            
+            // Initialize terminal line counter in rootScope if not exists
+            if (!$rootScope.terminalLineComplete) {
+                $rootScope.terminalLineComplete = [-1]; // Start with -1 to allow first line to start
+            }
             
             element.html('<span class="prompt">' + prompt + '</span> <span class="typed-text"></span><span class="cursor">|</span>');
             var typedTextElement = element.find('.typed-text');
             
-            $timeout(function() {
+            // Check if this line should start typing
+            var checkLineStatus = function() {
+                if ($rootScope.terminalLineComplete[$rootScope.terminalLineComplete.length - 1] >= lineIndex - 1) {
+                    // Previous line is complete, start typing this one
+                    startTyping();
+                } else {
+                    // Check again after a delay
+                    $timeout(checkLineStatus, 100);
+                }
+            };
+            
+            // Start the typing animation
+            var startTyping = function() {
+                // Add active-line class to show cursor
+                element.addClass('active-line');
+                
                 var i = 0;
                 var typeInterval = setInterval(function() {
                     if (i < text.length) {
@@ -55,9 +77,27 @@ app.directive('terminalText', ['$timeout', function($timeout) {
                         i++;
                     } else {
                         clearInterval(typeInterval);
+                        // Mark this line as complete
+                        $rootScope.terminalLineComplete.push(lineIndex);
+                        
+                        // Remove active-line class to hide cursor when done
+                        $timeout(function() {
+                            element.removeClass('active-line');
+                        }, 500);
                     }
                 }, typingSpeed);
-            }, startDelay);
+            };
+            
+            // Start the process
+            $timeout(function() {
+                if (lineIndex === 0) {
+                    // First line starts after initial delay
+                    startTyping();
+                } else {
+                    // Other lines wait for their turn
+                    checkLineStatus();
+                }
+            }, lineIndex === 0 ? startDelay : 0);
         }
     };
 }]);

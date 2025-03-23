@@ -19,7 +19,7 @@ app.controller('HomeController', ['$scope', '$timeout', function($scope, $timeou
     // Initialize typed.js for animated typing
     $timeout(function() {
         var typed = new Typed('#typed-text', {
-            strings: ['Java Developer.', 'Node.js Expert.', 'React Specialist.', 'Software Engineer.'],
+            strings: ['The only AI you will ever need.', 'AI with a Human Touch.', 'The Intelligence You Can Trust.', 'Bridging Logic and Innovation.'],
             typeSpeed: 80,
             backSpeed: 40,
             backDelay: 1500,
@@ -163,13 +163,12 @@ app.controller('HomeController', ['$scope', '$timeout', function($scope, $timeou
  * About Controller
  */
 app.controller('AboutController', ['$scope', function($scope) {
-    // Personal information
     $scope.aboutMe = {
-        birthYear: 1990, // Change this to your birth year
-        location: 'Your Location',
-        email: 'youremail@example.com',
-        phone: '+1 123 456 7890',
-        bio: 'I am a passionate software developer with expertise in Java, Node.js, and React. With years of experience in the industry, I have worked on various challenging projects, solving complex problems and delivering high-quality solutions.'
+        birthYear: 2001,
+        location: 'Nagpur, India',
+        email: 'abhinavingle8080@gmail.com',
+        phone: '+91 9595385841',
+        bio: "Hi there! 👋 I'm a Full Stack Developer who builds APIs, debugs them, and questions my life choices—fueled by caffeine and determination. With 2+ years of experience, I craft reliable backends, sleek frontends, and debug mysteries that shouldn't work but do. When I'm not coding, I'm probably laughing at coding memes. Let’s build something awesome (and maybe break it a little)! 😎"
     };
     
     // Calculate age dynamically
@@ -182,40 +181,33 @@ app.controller('AboutController', ['$scope', function($scope) {
     // Experience timeline data
     $scope.experiences = [
         {
-            position: 'Senior Software Developer',
-            company: 'Tech Company Name',
-            period: '2021 - Present',
-            description: 'Leading the development of enterprise-level applications using Java, Spring Boot, and React. Mentoring junior developers and participating in architecture design.',
-            technologies: ['Java', 'Spring Boot', 'React', 'AWS', 'MongoDB']
+            position: 'Full Stack Developer',
+            company: 'Iloma Technology Pvt.Ltd',
+            period: 'Sept 2023 - Present',
+            description: 'Leading the development of enterprise-level applications using Node.js, React, and Express. Mentoring junior developers and participating in architecture design.',
+            technologies: ['Node.js', 'React', 'Express', 'MySQL']
         },
         {
             position: 'Full Stack Developer',
-            company: 'Another Company Name',
-            period: '2018 - 2021',
+            company: 'Self-Employed',
+            period: '2021 - 2023',
             description: 'Developed and maintained web applications using Node.js and React. Collaborated with UX/UI designers to implement responsive and intuitive interfaces.',
             technologies: ['Node.js', 'Express', 'React', 'PostgreSQL', 'Docker']
-        },
-        {
-            position: 'Junior Developer',
-            company: 'First Company Name',
-            period: '2016 - 2018',
-            description: 'Started as a Java developer working on backend services. Gradually expanded skills to include frontend development with JavaScript and React.',
-            technologies: ['Java', 'JavaScript', 'React', 'MySQL']
         }
     ];
     
     // Education timeline data
     $scope.education = [
         {
-            degree: 'Master of Science in Computer Science',
-            institution: 'University Name',
-            period: '2014 - 2016',
-            description: 'Specialized in Software Engineering with focus on distributed systems and cloud computing.'
+            degree: 'Secondary and Higher Secondary',
+            institution: 'Maharashtra State Board',
+            period: '2016 - 2018',
+            description: 'Fundamentals of Mathematics, Science, and Computer Science.'
         },
         {
             degree: 'Bachelor of Science in Computer Science',
-            institution: 'University Name',
-            period: '2010 - 2014',
+            institution: 'Sant Gadge Baba Amravati University',
+            period: '2018 - 2021',
             description: 'Fundamentals of computer science, algorithms, data structures, and software development.'
         }
     ];
