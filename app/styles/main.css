@@ -47,6 +47,32 @@ h1, h2, h3, h4, h5, h6 {
     transition: var(--transition);
 }
 
+/* Specific style for home navbar - always transparent until scrolled */
+.home-navbar {
+    background-color: transparent !important;
+}
+
+.home-navbar.navbar-scrolled {
+    background-color: rgba(26, 37, 47, 0.95) !important;
+}
+
+/* Add padding to page content to prevent overlap with fixed navbar - exclude home */
+body:not(.home-active) .page-header,
+body:not(.home-active) section:first-of-type:not(.hero) {
+    padding-top: 100px; /* Adjust this value based on navbar height */
+}
+
+/* Apply padding for all view containers except home */
+body:not(.home-active) .view-container {
+    padding-top: 70px;
+}
+
+/* Reset for home */
+.hero {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
 .navbar-scrolled {
     background-color: rgba(26, 37, 47, 0.95);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -754,4 +780,210 @@ textarea.form-control {
     font-size: 0.8rem;
     display: block;
     line-height: 1;
+}
+
+/* Terminal Styling */
+.terminal-container {
+    background-color: #2c3e50;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    font-family: 'Fira Code', monospace;
+    margin-bottom: 2rem;
+}
+
+.terminal-header {
+    background-color: #1a252f;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminal-buttons {
+    display: flex;
+    margin-right: 15px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.terminal-button.red {
+    background-color: #ff5f56;
+}
+
+.terminal-button.yellow {
+    background-color: #ffbd2e;
+}
+
+.terminal-button.green {
+    background-color: #27c93f;
+}
+
+.terminal-title {
+    color: #ecf0f1;
+    font-size: 14px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.terminal-body {
+    padding: 20px;
+    color: #ecf0f1;
+    line-height: 1.6;
+    background-color: #2c3e50;
+}
+
+.terminal-body div {
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.terminal-body .prompt {
+    color: #e74c3c;
+    margin-right: 8px;
+}
+
+.terminal-body .typed-text {
+    color: #ecf0f1;
+}
+
+.terminal-body .cursor {
+    color: #ecf0f1;
+    font-weight: 700;
+    animation: blink 1s infinite;
+    opacity: 0; /* Hide cursor by default */
+}
+
+.terminal-body .active-line .cursor {
+    opacity: 1; /* Show cursor only on active line */
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Testimonial Styles */
+.testimonials {
+    background-color: var(--light-color);
+    padding: 6rem 0;
+}
+
+.testimonial-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-content {
+    font-style: italic;
+    color: rgba(51, 51, 51, 0.8);
+    margin-bottom: 1.5rem;
+    position: relative;
+    flex-grow: 1;
+}
+
+.testimonial-content p {
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-content::before {
+    content: '"';
+    font-size: 5rem;
+    color: rgba(231, 76, 60, 0.1);
+    position: absolute;
+    top: -2rem;
+    left: -1rem;
+    z-index: 0;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 1rem;
+    border: 3px solid var(--secondary-color);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+.testimonial-info h5 {
+    margin-bottom: 0.25rem;
+    color: var(--primary-color);
+}
+
+.testimonial-info p {
+    font-size: 0.9rem;
+    color: rgba(51, 51, 51, 0.7);
+    margin: 0;
+}
+
+/* Timeline Styles */
+.timeline {
+    position: relative;
+    margin: 2rem 0;
+}
+
+.timeline-container {
+    position: relative;
+    padding: 1.5rem 0;
+    margin-left: 60px;
+}
+
+.timeline-divider {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(44, 62, 80, 0.2);
+}
+
+.timeline-icon {
+    position: absolute;
+    left: -60px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+}
+
+.timeline-body {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 } 

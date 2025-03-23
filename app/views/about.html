@@ -7,7 +7,8 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h1 class="display-4" data-aos="fade-up">About Me</h1>
-                <p class="lead" data-aos="fade-up" data-aos-delay="200">Learn more about my background, experience, and passion for software development.</p>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">Learn more about my background, experience, and
+                    passion for software development.</p>
             </div>
         </div>
     </div>
@@ -19,14 +20,15 @@
         <div class="row align-items-center">
             <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
                 <div class="about-image-container">
-                    <img src="app/images/profile.jpg" alt="Profile Image" class="about-image img-fluid">
+                    <img src="app/images/profile.jpeg" alt="Profile Image" class="about-image img-fluid">
                 </div>
             </div>
             <div class="col-lg-7" data-aos="fade-left">
                 <h2>Who Am I?</h2>
-                <p class="lead about-text">A passionate software developer with expertise in Java, Node.js, and React.</p>
+                <p class="lead about-text">A passionate software developer with expertise in Java, Node.js, and React.
+                </p>
                 <p class="about-text">{{aboutMe.bio}}</p>
-                
+
                 <div class="row mt-4 mb-4">
                     <div class="col-md-6">
                         <ul class="about-info">
@@ -43,24 +45,25 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="code-snippet" data-aos="zoom-in">
                     <span class="language">javascript</span>
                     <pre>
 <span class="code-line"><span class="code-comment">// A bit about my coding philosophy</span></span>
 <span class="code-line"><span class="code-keyword">const</span> <span class="code-function">developer</span> = {</span>
 <span class="code-line">  name: <span class="code-string">"{{yourName}}"</span>,</span>
-<span class="code-line">  expertise: [<span class="code-string">"Java"</span>, <span class="code-string">"Node.js"</span>, <span class="code-string">"React"</span>],</span>
+<span class="code-line">  expertise: [<span class="code-string">"Java"</span>, <span class="code-string">"Node.js"</span>, <span class="code-string">"React"</span>, <span class="code-string">"Next.js"</span>],</span>
 <span class="code-line">  passions: [<span class="code-string">"Clean Code"</span>, <span class="code-string">"Problem Solving"</span>, <span class="code-string">"Innovation"</span>],</span>
 <span class="code-line">  approach: () => {</span>
-<span class="code-line">    <span class="code-keyword">return</span> <span class="code-string">"I believe in writing clean, efficient, and maintainable code that solves real-world problems."</span>;</span>
+<span class="code-line">    <span class="code-keyword">return</span> <span class="code-string">"I believe in writing clean, efficient, and maintainable code </br> that solves real-world problems."</span>;</span>
 <span class="code-line">  }</span>
 <span class="code-line">};</span>
                     </pre>
                 </div>
-                
+
                 <div class="mt-4">
-                    <a href="app/files/resume.pdf" class="btn btn-primary" download><i class="fas fa-download"></i> Download Resume</a>
+                    <a href="app/files/resume.pdf" class="btn btn-primary" download><i class="fas fa-download"></i>
+                        Download Resume</a>
                     <a href="#!/contact" class="btn btn-secondary ml-3"><i class="fas fa-envelope"></i> Contact Me</a>
                 </div>
             </div>
@@ -72,19 +75,19 @@
 <section class="experience py-5 bg-light">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Work Experience</h2>
-        
+
         <div class="timeline" data-aos="fade-up" data-aos-delay="200">
             <div class="timeline-container" ng-repeat="job in experiences">
                 <div class="timeline-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
-                <div class="timeline-body">
+                <div class="timeline-body mt-3">
                     <h4 class="timeline-title">{{job.position}}</h4>
                     <h5 class="timeline-subtitle">{{job.company}}</h5>
                     <p class="timeline-date"><i class="far fa-calendar-alt"></i> {{job.period}}</p>
                     <p class="timeline-text">{{job.description}}</p>
                     <div class="timeline-tags">
-                        <span class="timeline-tag" ng-repeat="tech in job.technologies">{{tech}}</span>
+                        <span>Tech: </span><span class="timeline-tag" ng-repeat="tech in job.technologies">#{{tech}} </span>
                     </div>
                 </div>
             </div>
@@ -96,13 +99,13 @@
 <section class="education py-5">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Education</h2>
-        
+
         <div class="timeline" data-aos="fade-up" data-aos-delay="200">
             <div class="timeline-container" ng-repeat="edu in education">
                 <div class="timeline-icon">
                     <i class="fas fa-graduation-cap"></i>
                 </div>
-                <div class="timeline-body">
+                <div class="timeline-body mt-3">
                     <h4 class="timeline-title">{{edu.degree}}</h4>
                     <h5 class="timeline-subtitle">{{edu.institution}}</h5>
                     <p class="timeline-date"><i class="far fa-calendar-alt"></i> {{edu.period}}</p>
@@ -117,7 +120,7 @@
 <section class="interests py-5 bg-light">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Personal Interests</h2>
-        
+
         <div class="row text-center mt-5">
             <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="interest-item">
@@ -127,7 +130,7 @@
                     <h5>Coding</h5>
                 </div>
             </div>
-            
+
             <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="interest-item">
                     <div class="interest-icon">
@@ -136,7 +139,7 @@
                     <h5>Reading</h5>
                 </div>
             </div>
-            
+
             <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="interest-item">
                     <div class="interest-icon">
@@ -145,7 +148,7 @@
                     <h5>Hiking</h5>
                 </div>
             </div>
-            
+
             <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="400">
                 <div class="interest-item">
                     <div class="interest-icon">
@@ -154,7 +157,7 @@
                     <h5>Photography</h5>
                 </div>
             </div>
-            
+
             <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="500">
                 <div class="interest-item">
                     <div class="interest-icon">
@@ -163,7 +166,7 @@
                     <h5>Travel</h5>
                 </div>
             </div>
-            
+
             <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="600">
                 <div class="interest-item">
                     <div class="interest-icon">
@@ -172,7 +175,7 @@
                     <h5>Chess</h5>
                 </div>
             </div>
-            
+
             <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="700">
                 <div class="interest-item">
                     <div class="interest-icon">
@@ -181,7 +184,7 @@
                     <h5>Music</h5>
                 </div>
             </div>
-            
+
             <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="800">
                 <div class="interest-item">
                     <div class="interest-icon">
@@ -198,58 +201,60 @@
 <section class="testimonials py-5">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">What People Say</h2>
-        
+
         <div class="row mt-5">
             <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>"An exceptional developer who consistently delivers high-quality code. Their expertise in Java and React helped our project succeed beyond expectations."</p>
+                        <p>"An exceptional developer who consistently delivers high-quality code. Their expertise in
+                            Java and React helped our project succeed beyond expectations."</p>
                     </div>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">
-                            <img src="app/images/testimonial1.jpg" alt="Testimonial 1">
+                            <img src="app/images/testimonial/shekhar-sir.jpg" alt="Testimonial 1">
                         </div>
                         <div class="testimonial-info">
-                            <h5>John Smith</h5>
-                            <p>CTO, TechCorp</p>
+                            <h5>Shekhar Sir</h5>
+                            <p>CTO, Iloma Technology Pvt.Ltd</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>"Working with them was a pleasure. Their Node.js skills are impressive, and they're great at solving complex problems with elegant solutions."</p>
+                        <p>"Working with Abhinav has been an incredible experience. As a Full Stack Developer, he seamlessly integrates backend logic with front-end interfaces, making our projects smooth and efficient. His problem-solving skills and dedication to quality have made every collaboration a success!"</p>
                     </div>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">
-                            <img src="app/images/testimonial2.jpg" alt="Testimonial 2">
+                            <img src="app/images/testimonial/yash-hikare.png" alt="Testimonial 2">
                         </div>
                         <div class="testimonial-info">
-                            <h5>Sarah Johnson</h5>
-                            <p>Project Manager, WebSolutions</p>
+                            <h5>Yash Hikare</h5>
+                            <p>Front-End Flutter Developer, Iloma Technology Pvt. Ltd.</p>
                         </div>
                     </div>
                 </div>
             </div>
             
+
             <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="500">
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>"A truly talented developer who brings both technical expertise and creative thinking to every project. Their React applications are both beautiful and functional."</p>
+                        <p>"testimonial text"</p>
                     </div>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">
-                            <img src="app/images/testimonial3.jpg" alt="Testimonial 3">
+                            <img src="app/images/testimonial/naresh-sir.jpg" alt="Testimonial 3">
                         </div>
                         <div class="testimonial-info">
-                            <h5>Michael Lee</h5>
-                            <p>Lead Developer, CreativeApps</p>
+                            <h5>Naresh Sir</h5>
+                            <p>Lead Developer, Iloma Technology Pvt.Ltd</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section> 
+</section>
