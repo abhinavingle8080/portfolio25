@@ -15,7 +15,7 @@ app.controller('MainController', ['$scope', '$window', function($scope, $window)
 /**
  * Home Controller
  */
-app.controller('HomeController', ['$scope', '$timeout', function($scope, $timeout) {
+app.controller('HomeController', ['$scope', '$timeout', 'portfolioService', function($scope, $timeout, portfolioService) {
     // Initialize typed.js for animated typing
     $timeout(function() {
         var typed = new Typed('#typed-text', {
@@ -27,6 +27,9 @@ app.controller('HomeController', ['$scope', '$timeout', function($scope, $timeou
             loop: true
         });
     }, 500);
+    
+    // Get projects from portfolio service
+    $scope.projects = portfolioService.projects;
     
     // Initialize 3D Background with three.js
     $scope.init3DBackground = function() {
@@ -168,7 +171,7 @@ app.controller('AboutController', ['$scope', function($scope) {
         location: 'Nagpur, India',
         email: 'abhinavingle8080@gmail.com',
         phone: '+91 9595385841',
-        bio: "Hi there! 👋 I'm a Full Stack Developer who builds APIs, debugs them, and questions my life choices—fueled by caffeine and determination. With 2+ years of experience, I craft reliable backends, sleek frontends, and debug mysteries that shouldn't work but do. When I'm not coding, I'm probably laughing at coding memes. Let’s build something awesome (and maybe break it a little)! 😎"
+        bio: "Hi there! 👋 I'm a Full Stack Developer who builds APIs, debugs them, and questions my life choices—fueled by caffeine and determination. With 2+ years of experience, I craft reliable backends, sleek frontends, and debug mysteries that shouldn't work but do. When I'm not coding, I'm probably laughing at coding memes. Let's build something awesome (and maybe break it a little)! 😎"
     };
     
     // Calculate age dynamically

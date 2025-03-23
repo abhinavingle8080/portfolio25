@@ -104,70 +104,21 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
         <div class="row">
-            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200" ng-repeat="project in projects | filter:{featured:true} | limitTo:3">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="app/images/project1.jpg" alt="E-Commerce Platform">
+                        <img ng-src="{{project.image}}" alt="{{project.title}}">
                     </div>
-                    <span class="project-category">Java</span>
+                    <span class="project-category">{{project.category}}</span>
                     <div class="project-content">
-                        <h3 class="project-title">E-Commerce Platform</h3>
-                        <p class="project-description">A full-featured e-commerce platform built with Java Spring Boot backend and React frontend.</p>
+                        <h3 class="project-title">{{project.title}}</h3>
+                        <p class="project-description">{{project.longDescription}}</p>
                         <div class="project-techs">
-                            <span class="project-tech">Java</span>
-                            <span class="project-tech">Spring Boot</span>
-                            <span class="project-tech">React</span>
-                            <span class="project-tech">MySQL</span>
+                            <span class="project-tech" ng-repeat="tech in project.technologies">{{tech}}</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link view-link"><i class="fas fa-eye"></i> View</a>
-                            <a href="#" class="project-link code-link"><i class="fas fa-code"></i> Code</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="app/images/project2.jpg" alt="Task Management System">
-                    </div>
-                    <span class="project-category">Node.js</span>
-                    <div class="project-content">
-                        <h3 class="project-title">Task Management System</h3>
-                        <p class="project-description">A collaborative task management system with real-time updates using Socket.io.</p>
-                        <div class="project-techs">
-                            <span class="project-tech">Node.js</span>
-                            <span class="project-tech">Express</span>
-                            <span class="project-tech">MongoDB</span>
-                            <span class="project-tech">Socket.io</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link view-link"><i class="fas fa-eye"></i> View</a>
-                            <a href="#" class="project-link code-link"><i class="fas fa-code"></i> Code</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="600">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="app/images/project3.jpg" alt="Social Media Dashboard">
-                    </div>
-                    <span class="project-category">React</span>
-                    <div class="project-content">
-                        <h3 class="project-title">Social Media Dashboard</h3>
-                        <p class="project-description">A responsive dashboard for social media analytics with interactive charts and data visualization.</p>
-                        <div class="project-techs">
-                            <span class="project-tech">React</span>
-                            <span class="project-tech">Redux</span>
-                            <span class="project-tech">D3.js</span>
-                            <span class="project-tech">Firebase</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link view-link"><i class="fas fa-eye"></i> View</a>
-                            <a href="#" class="project-link code-link"><i class="fas fa-code"></i> Code</a>
+                            <a ng-href="{{project.demoLink}}" class="project-link view-link" target="_blank"><i class="fas fa-eye"></i> View</a>
+                            <a href="#!/projects" class="project-link code-link"><i class="fas fa-code"></i> Details</a>
                         </div>
                     </div>
                 </div>
