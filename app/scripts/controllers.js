@@ -1,5 +1,6 @@
 'use strict';
 
+
 /**
  * Main Controller
  */
@@ -19,7 +20,7 @@ app.controller('HomeController', ['$scope', '$timeout', 'portfolioService', func
     // Initialize typed.js for animated typing
     $timeout(function() {
         var typed = new Typed('#typed-text', {
-            strings: ['The only AI you will ever need.', 'AI with a Human Touch.', 'The Intelligence You Can Trust.', 'Bridging Logic and Innovation.'],
+            strings: ['The only A.I. you will ever need.', 'A.I. with a Human Touch.', 'The Intelligence You Can Trust.', 'Bridging Logic and Innovation.'],
             typeSpeed: 80,
             backSpeed: 40,
             backDelay: 1500,
@@ -398,4 +399,58 @@ app.controller('ContactController', ['$scope', '$window', '$timeout', function($
         phone: '+1 123 456 7890',
         location: 'Your City, Country'
     };
+}]);
+
+/**
+ * Project Detail Controller
+ */
+app.controller('ProjectDetailController', ['$scope', '$routeParams', '$location', 'portfolioService', '$timeout', function($scope, $routeParams, $location, portfolioService, $timeout) {
+    // Get project ID from route params and convert to number
+    const projectId = parseInt($routeParams.id);
+    
+    // Find project in the projects array
+    $scope.project = portfolioService.projects.find(project => project.id === projectId);
+    
+    // If project not found, redirect to projects page
+    if (!$scope.project) {
+        $location.path('/projects');
+        return;
+    }
+    
+    // Set page title
+    $scope.pageTitle = $scope.project.title;
+    
+    // Initialize Swiper slider after view is loaded
+    $timeout(function() {
+        new Swiper('.project-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            speed: 800,
+            grabCursor: true,
+            watchSlidesProgress: true,
+            preloadImages: true,
+            lazy: true,
+            a11y: {
+                prevSlideMessage: 'Previous slide',
+                nextSlideMessage: 'Next slide',
+            }
+        });
+    }, 100);
 }]); 

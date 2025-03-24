@@ -24,6 +24,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
             templateUrl: 'app/views/projects.html',
             controller: 'ProjectsController'
         })
+        .when('/projects/:id', {
+            templateUrl: 'app/views/project-detail.html',
+            controller: 'ProjectDetailController'
+        })
         .when('/blog', {
             templateUrl: 'app/views/blog.html',
             controller: 'BlogController'
@@ -48,7 +52,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 // Run block for initialization
 app.run(['$rootScope', function($rootScope) {
     // Set your name here
-    $rootScope.yourName = 'Abhinav';
+    $rootScope.yourName = 'Abhinav Ingle';
     $rootScope.currentYear = new Date().getFullYear();
     
     // Initialize AOS animation library
