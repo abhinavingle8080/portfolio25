@@ -7,12 +7,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 hero-content">
-                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
+                <!-- span class="dev-name" -->
+                <span class="dev-name">
                     Hello Humans, I'm 
-                    <span class="dev-name">
+                    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
                         {{yourName}}
-                    </span>
-                </h1>
+                    </h1>
+                </span>
                 <h2 class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">
                     <span id="typed-text" class="hero-typed"></span>
                 </h2>
@@ -118,7 +119,7 @@
                         </div>
                         <div class="project-links">
                             <a ng-href="{{project.demoLink}}" class="project-link view-link" target="_blank"><i class="fas fa-eye"></i> View</a>
-                            <a href="#!/projects" class="project-link code-link"><i class="fas fa-code"></i> Details</a>
+                            <a href="#!/projects/{{project.id}}" class="project-link code-link"><i class="fas fa-code"></i> Details</a>
                         </div>
                     </div>
                 </div>

@@ -71,26 +71,81 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
     // Projects 
     service.projects = [
         {
+            id: 1,
             title: 'Color Pencil',
             category: 'Full Stack',
+            type: 'Web Application',
+            industry: 'Education',
             image: 'app/images/projects/colorpencil.svg',
             description: 'Node APIs + Admin + Parent & Student Panel',
             longDescription: 'Comprehensive education platform with APIs, admin panel, and interfaces for parents and students.',
             technologies: ['Node.js', 'Express', 'React', 'MySQL'],
             demoLink: 'https://colorpencildev.ilserver.cloud/',
-            featured: true
+            codeLink: 'https://github.com/yourusername/colorpencil',
+            featured: true,
+            completedDate: '2024',
+            screenshots: [
+                'app/images/projects/colorpencil/color-1.png',
+                'app/images/projects/colorpencil/color-2.png',
+                'app/images/projects/colorpencil/color-3.png'
+            ],
+            approach: 'The project was developed using an agile methodology with a focus on user experience and scalability. We implemented a microservices architecture to handle different aspects of the platform independently.',
+            challenges: [
+                {
+                    title: 'Real-time Progress Tracking',
+                    description: 'Implementing real-time progress tracking for students across multiple devices.',
+                    solution: 'Utilized WebSocket connections and Redis for real-time data synchronization.'
+                },
+                {
+                    title: 'Payment Integration',
+                    description: 'Integrating multiple payment gateways while ensuring transaction security.',
+                    solution: 'Implemented a payment abstraction layer with support for multiple providers and robust error handling.'
+                }
+            ],
+            role: 'Lead Full Stack Developer',
+            contributions: [
+                'Architected and implemented the core backend API structure',
+                'Developed the admin dashboard with real-time analytics',
+                'Implemented secure authentication and authorization system',
+                'Created responsive UI components for the student interface'
+            ]
         },
         {
+            id: 2,
             title: 'Fitness maa',
             category: 'Mobile',
+            type: 'Mobile Application',
+            industry: 'Health & Fitness',
             image: 'app/images/projects/fitness-maa.svg',
             description: 'Android + iOS Development',
             longDescription: 'Fitness application developed for both Android and iOS platforms.',
             technologies: ['Node.js', 'MySQL', 'Flutter'],
             demoLink: 'https://play.google.com/store/apps/details?id=com.ilomatech.fitnessmaaadmin&hl=en_US',
-            featured: true
+            codeLink: 'https://github.com/yourusername/fitnessmaa',
+            featured: true,
+            completedDate: '2023',
+            screenshots: [
+                'app/images/projects/fitnessmaa/screenshot1.jpg',
+                'app/images/projects/fitnessmaa/screenshot2.jpg',
+                'app/images/projects/fitnessmaa/screenshot3.jpg'
+            ],
+            approach: 'The mobile app was developed using Flutter for cross-platform compatibility, with a focus on performance and user engagement.',
+            challenges: [
+                {
+                    title: 'Cross-platform Compatibility',
+                    description: 'Ensuring consistent behavior across Android and iOS platforms.',
+                    solution: 'Implemented platform-specific code where necessary and used Flutter widgets that adapt to each platform.'
+                }
+            ],
+            role: 'Mobile Developer',
+            contributions: [
+                'Developed the core mobile application using Flutter',
+                'Implemented offline data synchronization',
+                'Created custom UI components for workout tracking'
+            ]
         },
         {
+            id : 3,
             title: 'Ease Your Shoot',
             category: 'Web',
             image: 'app/images/projects/eys-loader.gif',
@@ -101,6 +156,7 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             featured: true
         },
         {
+            id : 4,
             title: 'Generic API',
             category: 'Backend',
             image: 'app/images/projects/iloma.svg',
@@ -111,6 +167,7 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             featured: false
         },
         {
+            id : 5,
             title: 'Salt',
             category: 'Web',
             image: 'app/images/projects/salt.svg',
@@ -121,6 +178,7 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             featured: false
         },
         {
+            id : 6,
             title: 'iLrestro App',
             category: 'Web',
             image: 'app/images/projects/iloma.svg',
@@ -131,6 +189,7 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             featured: false
         },
         {
+            id : 7,
             title: 'BhimSup App',
             category: 'Web',
             image: 'app/images/projects/bhimsup.svg',
@@ -141,6 +200,7 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             featured: false
         },
         {
+            id : 8,
             title: 'Buty Public School',
             category: 'Web',
             image: 'app/images/projects/buty.svg',
