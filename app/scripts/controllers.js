@@ -16,7 +16,7 @@ app.controller('MainController', ['$scope', '$window', function($scope, $window)
 /**
  * Home Controller
  */
-app.controller('HomeController', ['$scope', '$timeout', 'portfolioService', function($scope, $timeout, portfolioService) {
+app.controller('HomeController', ['$scope', '$timeout', 'portfolioService', 'PortfolioDataService', function($scope, $timeout, portfolioService, PortfolioDataService) {
     // Initialize typed.js for animated typing
     $timeout(function() {
         var typed = new Typed('#typed-text', {
@@ -29,8 +29,12 @@ app.controller('HomeController', ['$scope', '$timeout', 'portfolioService', func
         });
     }, 500);
     
+    // Get personal information and social links
+    $scope.yourName = PortfolioDataService.personalInfo.name;
+    $scope.socialLinks = PortfolioDataService.socialLinks;
+    
     // Get projects from portfolio service
-    $scope.projects = portfolioService.projects;
+    $scope.projects = PortfolioDataService.projects;
     
     // Initialize 3D Background with three.js
     $scope.init3DBackground = function() {
@@ -274,9 +278,65 @@ app.controller('SkillsController', ['$scope', '$timeout', function($scope, $time
 /**
  * Projects Controller
  */
-app.controller('ProjectsController', ['$scope', function($scope) {
-    // Filter categories
-    $scope.filters = ['All', 'Java', 'Node.js', 'React', 'Mobile', 'Other'];
+// app.controller('ProjectsController', ['$scope', 'PortfolioDataService', function($scope, PortfolioDataService) {
+//     // Get projects from portfolio data service
+//     $scope.projects = PortfolioDataService.projects;
+    
+//     // Filter categories - build from projects technologies
+//     const allTechnologies = [];
+//     $scope.projects.forEach(project => {
+//         if (project.technologies) {
+//             project.technologies.forEach(tech => {
+//                 if (!allTechnologies.includes(tech)) {
+//                     allTechnologies.push(tech);
+//                 }
+//             });
+//         }
+//     });
+    
+//     // Create filters from unique technologies plus 'All' filter
+//     $scope.filters = ['All'];
+//     allTechnologies.sort().forEach(tech => {
+//         $scope.filters.push(tech);
+//     });
+    
+//     // Add category filters
+//     const categories = [...new Set($scope.projects.map(project => project.category))];
+//     categories.forEach(category => {
+//         if (category && !$scope.filters.includes(category)) {
+//             $scope.filters.push(category);
+//         }
+//     });
+    
+//     $scope.activeFilter = 'All';
+    
+//     // Set active filter
+//     $scope.setFilter = function(filter) {
+//         $scope.activeFilter = filter;
+//     };
+    
+//     // Check if project should be visible based on filter
+//     $scope.isVisible = function(project) {
+//         if ($scope.activeFilter === 'All') {
+//             return true;
+//         }
+//         if (project.category === $scope.activeFilter) {
+//             return true;
+//         }
+//         return project.technologies && project.technologies.indexOf($scope.activeFilter) !== -1;
+//     };
+    
+//     // Get the featured project for the showcase
+//     $scope.featuredProject = $scope.projects.find(project => project.featured && project.id === 1) || $scope.projects[0];
+// }]);
+
+app.controller('ProjectsController', ['$scope', 'PortfolioDataService', function($scope, PortfolioDataService) {
+    // Get projects from portfolio data service
+    $scope.projects = PortfolioDataService.projects;
+    
+    // Define the allowed filters
+    $scope.filters = ['All', 'Java', 'Node.js', 'React', 'Next'];
+
     $scope.activeFilter = 'All';
     
     // Set active filter
@@ -289,72 +349,18 @@ app.controller('ProjectsController', ['$scope', function($scope) {
         if ($scope.activeFilter === 'All') {
             return true;
         }
-        return project.technologies.indexOf($scope.activeFilter) !== -1;
+        return project.technologies && project.technologies.includes($scope.activeFilter);
     };
     
-    // Projects data
-    $scope.projects = [
-        {
-            title: 'E-Commerce Platform',
-            category: 'Java',
-            image: 'app/images/project1.jpg',
-            description: 'A full-featured e-commerce platform built with Java Spring Boot backend and React frontend.',
-            technologies: ['Java', 'Spring Boot', 'React', 'MySQL', 'AWS'],
-            demoLink: '#',
-            codeLink: '#'
-        },
-        {
-            title: 'Task Management System',
-            category: 'Node.js',
-            image: 'app/images/project2.jpg',
-            description: 'A collaborative task management system with real-time updates using Socket.io.',
-            technologies: ['Node.js', 'Express', 'MongoDB', 'Socket.io', 'React'],
-            demoLink: '#',
-            codeLink: '#'
-        },
-        {
-            title: 'Social Media Dashboard',
-            category: 'React',
-            image: 'app/images/project3.jpg',
-            description: 'A responsive dashboard for social media analytics with interactive charts and data visualization.',
-            technologies: ['React', 'Redux', 'D3.js', 'Firebase'],
-            demoLink: '#',
-            codeLink: '#'
-        },
-        {
-            title: 'Mobile Banking App',
-            category: 'Mobile',
-            image: 'app/images/project4.jpg',
-            description: 'A secure mobile banking application with biometric authentication and transaction tracking.',
-            technologies: ['Java', 'Android', 'Spring Boot', 'PostgreSQL'],
-            demoLink: '#',
-            codeLink: '#'
-        },
-        {
-            title: 'Content Management System',
-            category: 'Node.js',
-            image: 'app/images/project5.jpg',
-            description: 'A flexible and extensible CMS with a user-friendly admin interface and customizable templates.',
-            technologies: ['Node.js', 'Express', 'MongoDB', 'Handlebars'],
-            demoLink: '#',
-            codeLink: '#'
-        },
-        {
-            title: 'Weather Forecast App',
-            category: 'React',
-            image: 'app/images/project6.jpg',
-            description: 'A weather forecast application with location-based data and interactive maps.',
-            technologies: ['React', 'Node.js', 'OpenWeatherMap API', 'Google Maps API'],
-            demoLink: '#',
-            codeLink: '#'
-        }
-    ];
+    // Get the featured project for the showcase
+    $scope.featuredProject = $scope.projects.find(project => project.featured && project.id === 1) || $scope.projects[0];
 }]);
+
 
 /**
  * Contact Controller
  */
-app.controller('ContactController', ['$scope', '$window', '$timeout', function($scope, $window, $timeout) {
+app.controller('ContactController', ['$scope', '$window', '$timeout', 'PortfolioDataService', function($scope, $window, $timeout, PortfolioDataService) {
     // Initialize contact form
     $scope.contactForm = {
         name: '',
@@ -393,23 +399,26 @@ app.controller('ContactController', ['$scope', '$window', '$timeout', function($
         }, 1500);
     };
     
+    // Get contact information from portfolio data
+    const email = PortfolioDataService.socialLinks.find(link => link.title === 'Email')?.link.replace('mailto:', '') || 'abhinavingle8080@gmail.com';
+    
     // Contact information
     $scope.contactInfo = {
-        email: 'youremail@example.com',
-        phone: '+1 123 456 7890',
-        location: 'Your City, Country'
+        email: email,
+        phone: '+91 9595385841', // Could be added to personalInfo if needed
+        location: PortfolioDataService.personalInfo.location
     };
 }]);
 
 /**
  * Project Detail Controller
  */
-app.controller('ProjectDetailController', ['$scope', '$routeParams', '$location', 'portfolioService', '$timeout', function($scope, $routeParams, $location, portfolioService, $timeout) {
+app.controller('ProjectDetailController', ['$scope', '$routeParams', '$location', 'PortfolioDataService', '$timeout', function($scope, $routeParams, $location, PortfolioDataService, $timeout) {
     // Get project ID from route params and convert to number
     const projectId = parseInt($routeParams.id);
     
     // Find project in the projects array
-    $scope.project = portfolioService.projects.find(project => project.id === projectId);
+    $scope.project = PortfolioDataService.projects.find(project => project.id === projectId);
     
     // If project not found, redirect to projects page
     if (!$scope.project) {

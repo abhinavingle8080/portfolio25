@@ -31,9 +31,10 @@
                 <span class="project-category">{{project.category}}</span>
                 <div class="project-content">
                     <h3 class="project-title">{{project.title}}</h3>
-                    <p class="project-description">{{project.description}}</p>
+                    <p class="project-description">{{project.description || project.longDescription}}</p>
                     <div class="project-techs">
-                        <span class="project-tech" ng-repeat="tech in project.technologies">{{tech}}</span>
+                        <span class="project-tech" ng-repeat="tech in project.technologies | limitTo:4">{{tech}}</span>
+                        <span class="project-tech more-tech" ng-if="project.technologies.length > 4">+{{project.technologies.length - 4}}</span>
                     </div>
                     <div class="project-links">
                         <a ng-href="{{project.demoLink}}" class="project-link view-link" target="_blank"><i class="fas fa-eye"></i> View</a>
@@ -54,28 +55,27 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <div class="featured-project-image">
-                        <img src="app/images/project1.jpg" alt="E-Commerce Platform" class="img-fluid">
+                        <img ng-src="{{featuredProject.image}}" alt="{{featuredProject.title}}" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="featured-project-content">
-                        <h3 class="featured-project-title">E-Commerce Platform</h3>
-                        <p class="featured-project-category">Java / Spring Boot / React</p>
+                        <h3 class="featured-project-title">{{featuredProject.title}}</h3>
+                        <p class="featured-project-category">{{featuredProject.category}}</p>
                         <p class="featured-project-description">
-                            This scalable e-commerce solution includes features like product catalog, shopping cart, payment processing, order management, and an admin dashboard. The system is built with a microservices architecture for better scalability and maintenance.
+                            {{featuredProject.info || featuredProject.longDescription}}
                         </p>
                         <h5>Key Features:</h5>
                         <ul class="featured-project-features">
-                            <li>Microservices architecture with Spring Boot</li>
-                            <li>Responsive React frontend with Redux state management</li>
-                            <li>Real-time inventory updates and notifications</li>
-                            <li>Secure payment gateway integration</li>
-                            <li>Comprehensive admin dashboard for management</li>
-                            <li>Advanced search and filtering functionality</li>
+                            <li ng-repeat="challenge in featuredProject.challenges">{{challenge.title}}: {{challenge.solution}}</li>
+                            <li ng-if="!featuredProject.challenges || featuredProject.challenges.length === 0">Responsive design across all devices</li>
+                            <li ng-if="!featuredProject.challenges || featuredProject.challenges.length === 0">User-friendly interface with intuitive navigation</li>
+                            <li ng-if="!featuredProject.challenges || featuredProject.challenges.length === 0">Optimized performance for a seamless experience</li>
+                            <li ng-if="!featuredProject.challenges || featuredProject.challenges.length === 0">Secure data handling and storage</li>
                         </ul>
                         <div class="featured-project-links">
-                            <a href="#" class="btn btn-primary" target="_blank"><i class="fas fa-eye"></i> View Demo</a>
-                            <a href="#" class="btn btn-secondary ml-3" target="_blank"><i class="fas fa-code"></i> View Code</a>
+                            <a ng-href="{{featuredProject.demoLink}}" class="btn btn-primary" target="_blank"><i class="fas fa-eye"></i> View Demo</a>
+                            <a ng-href="{{featuredProject.codeLink || '#!/projects/' + featuredProject.id}}" class="btn btn-secondary ml-3" target="_blank"><i class="fas fa-code"></i> View Details</a>
                         </div>
                     </div>
                 </div>
