@@ -78,6 +78,7 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             industry: 'Education',
             image: 'app/images/projects/colorpencil.svg',
             description: 'Node APIs + Admin + Parent & Student Panel',
+            info: "Color Pencil is a comprehensive education platform designed for seamless interaction between students, parents, and administrators. It includes a robust Node.js-based API, an intuitive admin panel for activity management, and dedicated portals for parents and students. Key features include real-time progress tracking, secure payment processing, and a user-friendly interface built with React. The platform ensures scalability, performance optimization, and a smooth user experience through well-structured backend logic and responsive UI components.",
             longDescription: 'Comprehensive education platform with APIs, admin panel, and interfaces for parents and students.',
             technologies: ['Node.js', 'Express', 'React', 'MySQL'],
             demoLink: 'https://colorpencildev.ilserver.cloud/',
@@ -89,7 +90,7 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
                 'app/images/projects/colorpencil/color-2.png',
                 'app/images/projects/colorpencil/color-3.png'
             ],
-            approach: 'The project was developed using an agile methodology with a focus on user experience and scalability. We implemented a microservices architecture to handle different aspects of the platform independently.',
+            approach: 'The project was developed using an agile methodology with a focus on user experience and scalability. We implemented an optimized approach to handle the data and the admin panel was developed using the MUI library.',
             challenges: [
                 {
                     title: 'Real-time Progress Tracking',
@@ -100,9 +101,14 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
                     title: 'Payment Integration',
                     description: 'Integrating multiple payment gateways while ensuring transaction security.',
                     solution: 'Implemented a payment abstraction layer with support for multiple providers and robust error handling.'
+                },
+                {
+                    title: 'Large User Base',
+                    description: 'Handling a large user base with efficient database management.',
+                    solution: 'Optimized the database schema using Database Indexing and Query Optimization.'
                 }
             ],
-            role: 'Lead Full Stack Developer',
+            role: 'Full Stack Developer',
             contributions: [
                 'Architected and implemented the core backend API structure',
                 'Developed the admin dashboard with real-time analytics',

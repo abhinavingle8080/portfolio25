@@ -112,12 +112,12 @@
                     </div>
                     <span class="project-category">{{project.category}}</span>
                     <div class="project-content">
-                        <h3 class="project-title">{{project.title}}</h3>
-                        <p class="project-description">{{project.longDescription}}</p>
+                        <h3 class="project-title">{{project.title || 'Project Title'}}</h3>
+                        <p class="project-description">{{project.description || project.longDescription || 'Project description goes here.'}}</p>
                         <div class="project-techs">
-                            <span class="project-tech" ng-repeat="tech in project.technologies">{{tech}}</span>
+                            <span class="project-tech" ng-repeat="tech in project.technologies | limitTo:4">{{tech}}</span>
                         </div>
-                        <div class="project-links">
+                        <div class="">
                             <a ng-href="{{project.demoLink}}" class="project-link view-link" target="_blank"><i class="fas fa-eye"></i> View</a>
                             <a href="#!/projects/{{project.id}}" class="project-link code-link"><i class="fas fa-code"></i> Details</a>
                         </div>
@@ -231,7 +231,7 @@
                         </div>
                         <div class="contact-info">
                             <h4>Email</h4>
-                            <p>youremail@example.com</p>
+                            <p>{{socialLinks[3].link.replace('mailto:', '')}}</p>
                         </div>
                     </div>
                     <div class="contact-info-item">
@@ -240,7 +240,7 @@
                         </div>
                         <div class="contact-info">
                             <h4>Phone</h4>
-                            <p>+1 123 456 7890</p>
+                            <p>+91 9595385841</p>
                         </div>
                     </div>
                     <div class="contact-info-item">
@@ -249,7 +249,7 @@
                         </div>
                         <div class="contact-info">
                             <h4>Location</h4>
-                            <p>Your City, Country</p>
+                            <p>Nagpur, India</p>
                         </div>
                     </div>
                 </div>
