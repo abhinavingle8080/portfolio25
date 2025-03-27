@@ -130,8 +130,23 @@
                 ng-repeat="screenshot in project.screenshots"
               >
                 <div>
+                  <!-- Check if the file is a video -->
+                  <video
+                    ng-if="screenshot.isVideo"
+                    controls
+                    class="img-fluid rounded w-100 h-100 object-fit-contain"
+                    autoplay
+                    muted
+                    playsinline
+                  >
+                    <source ng-src="{{screenshot.url}}" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+
+                  <!-- Otherwise, render as an image -->
                   <img
-                    ng-src="{{screenshot}}"
+                    ng-if="!screenshot.isVideo"
+                    ng-src="{{screenshot.url}}"
                     alt="Project Screenshot"
                     class="img-fluid rounded"
                   />
