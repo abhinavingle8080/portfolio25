@@ -6,7 +6,7 @@
 var app = angular.module('portfolioApp', ['ngRoute']);
 
 // Configure routes
-app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+app.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider', function($routeProvider, $locationProvider, $sceDelegateProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'app/views/home.html',
@@ -47,6 +47,14 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     // Use HTML5 history API for clean URLs (without #)
     $locationProvider.html5Mode(false);
     $locationProvider.hashPrefix('!');
+    
+    // Configure SCE to whitelist local resources
+    $sceDelegateProvider.resourceUrlWhitelist([
+        // Allow same origin resource loads
+        'self',
+        // Allow loading from our assets domain
+        'app/images/**'
+    ]);
 }]);
 
 // Run block for initialization

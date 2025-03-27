@@ -413,7 +413,7 @@ app.controller('ContactController', ['$scope', '$window', '$timeout', 'Portfolio
 /**
  * Project Detail Controller
  */
-app.controller('ProjectDetailController', ['$scope', '$routeParams', '$location', 'PortfolioDataService', '$timeout', function($scope, $routeParams, $location, PortfolioDataService, $timeout) {
+app.controller('ProjectDetailController', ['$scope', '$routeParams', '$location', 'PortfolioDataService', '$timeout', '$sce', function($scope, $routeParams, $location, PortfolioDataService, $timeout, $sce) {
     // Get project ID from route params and convert to number
     const projectId = parseInt($routeParams.id);
     
@@ -429,9 +429,19 @@ app.controller('ProjectDetailController', ['$scope', '$routeParams', '$location'
     // Set page title
     $scope.pageTitle = $scope.project.title;
     
+    // Process screenshots to handle trust and file types
+    if ($scope.project.screenshots && $scope.project.screenshots.length > 0) {
+        $scope.project.screenshots = $scope.project.screenshots.map(screenshot => {
+            return {
+                url: $sce.trustAsResourceUrl(screenshot),
+                isVideo: /\.(mp4|webm|ogg)$/i.test(screenshot)
+            };
+        });
+    }
+    
     // Initialize Swiper slider after view is loaded
     $timeout(function() {
-        new Swiper('.project-swiper', {
+        var swiper = new Swiper('.project-swiper', {
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
@@ -459,6 +469,26 @@ app.controller('ProjectDetailController', ['$scope', '$routeParams', '$location'
             a11y: {
                 prevSlideMessage: 'Previous slide',
                 nextSlideMessage: 'Next slide',
+            },
+            on: {
+                slideChange: function () {
+                    // Pause all videos when slide changes
+                    var videos = document.querySelectorAll('.swiper-container video');
+                    videos.forEach(function(video) {
+                        video.pause();
+                    });
+                    
+                    // Play the video in the active slide if there is one
+                    $timeout(function() {
+                        var activeSlide = document.querySelector('.swiper-slide-active');
+                        if (activeSlide) {
+                            var activeVideo = activeSlide.querySelector('video');
+                            if (activeVideo) {
+                                activeVideo.play();
+                            }
+                        }
+                    }, 100);
+                }
             }
         });
     }, 100);
