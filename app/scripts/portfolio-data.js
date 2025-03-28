@@ -82,7 +82,7 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             longDescription: 'Comprehensive education platform with APIs, admin panel, and interfaces for parents and students.',
             technologies: ['Node.js', 'Express', 'React', 'MySQL'],
             demoLink: 'https://colorpencildev.ilserver.cloud/',
-            codeLink: 'https://github.com/yourusername/colorpencil',
+            codeLink: '',
             featured: true,
             completedDate: '2024',
             screenshots: [
@@ -128,7 +128,7 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             "longDescription": "Fitness Maa is a comprehensive fitness application developed for both Android and iOS platforms. It provides users with structured workout plans, real-time performance tracking, and AI-driven exercise recommendations. The app is designed to offer a seamless experience across devices, supporting offline workout tracking and integration with fitness wearables. With a focus on user engagement, it includes custom UI components, push notifications, and a goal-setting feature to keep users motivated. The backend is powered by Node.js with MySQL to handle user data securely and efficiently.",
             "technologies": ["Node.js", "MySQL", "Flutter"],
             "demoLink": "https://play.google.com/store/apps/details?id=com.ilomatech.fitnessmaaadmin&hl=en_US",
-            "codeLink": "https://github.com/yourusername/fitnessmaa",
+            "codeLink": "",
             "featured": true,
             "completedDate": "2023",
             "screenshots": [
@@ -170,13 +170,14 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             "longDescription": "Ease Your Shoot is a powerful web application built for professional photographers to streamline their business operations. The platform offers features like automated client bookings, shoot management, contract handling, and secure online payments. It simplifies the entire workflow by integrating tools for scheduling, invoice generation, and gallery sharing. Developed using React for the front end and Node.js with Express and MySQL for the backend, the application ensures scalability, performance, and a seamless user experience.",
             "technologies": ["React", "Node.js", "Express", "MySQL"],
             "demoLink": "https://www.easeyourshootdev.ilserver.cloud/",
-            "codeLink": "https://github.com/yourusername/easeyourshoot",
+            "codeLink": "",
             "featured": true,
             "completedDate": "2024",
             "screenshots": [
-                "app/images/projects/easeyourshoot/eys1.png",
-                "app/images/projects/easeyourshoot/eys2.png",
-                "app/images/projects/easeyourshoot/eys3.png"
+                "app/images/projects/easeyourshoot/eys-1.png",
+                "app/images/projects/easeyourshoot/eys-2.png",
+                "app/images/projects/easeyourshoot/eys-3.png",
+                "app/images/projects/easeyourshoot/eys-4.png"
             ],
             "approach": "The project was developed with a focus on user experience and automation, ensuring photographers can manage their shoots efficiently. The UI was built with React for responsiveness, while Node.js and MySQL were used to handle data processing and storage securely.",
             "challenges": [
@@ -200,7 +201,6 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
                 "Optimized the database schema for handling large datasets"
             ]
         },
-        
         {
             "id": 4,
             "title": "Generic API",
@@ -212,15 +212,15 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             "info": "Generic API is a reusable and modular API framework designed for rapid application development. It provides a structured foundation for building scalable and maintainable backend systems. With built-in authentication, request validation, and database management, this framework accelerates API development and ensures best practices in backend architecture.",
             "longDescription": "The Generic API framework is built to provide a highly efficient and reusable backend solution. Designed with scalability in mind, it offers pre-configured modules for authentication, data validation, logging, and error handling. It simplifies development by providing a standardized structure, making it easy to extend for various applications. The API follows RESTful principles and is built using Node.js with Express for fast and lightweight request handling, while MySQL ensures robust data management.",
             "technologies": ["Node.js", "Express", "MySQL"],
-            "demoLink": "#",
-            "codeLink": "https://github.com/yourusername/generic-api",
+            "demoLink": "",
+            "codeLink": "",
             "featured": false,
             "completedDate": "2024",
-            "screenshots": [
-                "app/images/projects/generic-api/api1.png",
-                "app/images/projects/generic-api/api2.png",
-                "app/images/projects/generic-api/api3.png"
-            ],
+            // "screenshots": [
+            //     "app/images/projects/generic-api/api1.png",
+            //     "app/images/projects/generic-api/api2.png",
+            //     "app/images/projects/generic-api/api3.png"
+            // ],
             "approach": "The project was built with a modular structure to ensure reusability and scalability. A layered architecture was followed, separating concerns like controllers, services, and database operations. Security best practices, such as JWT authentication and rate limiting, were implemented.",
             "challenges": [
                 {
@@ -255,13 +255,11 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             "longDescription": "Salt is a full-stack web application built for sharing short recipe videos and engaging with a community of food lovers. The platform allows users to create an account, post videos, follow other users, leave comments, and explore content based on categories or trending filters. The UI is developed using React for a seamless experience, while the backend is powered by Node.js, Express, and MySQL for efficient data management. Advanced filtering and recommendation algorithms ensure users discover relevant recipes based on their preferences.",
             "technologies": ["React", "Node.js", "Express", "MySQL"],
             "demoLink": "#",
-            "codeLink": "https://github.com/yourusername/salt",
+            "codeLink": "",
             "featured": false,
             "completedDate": "2024",
             "screenshots": [
-                "app/images/projects/salt/salt1.png",
-                "app/images/projects/salt/salt2.png",
-                "app/images/projects/salt/salt3.png"
+                "app/images/projects/salt/salt1.png"
             ],
             "approach": "The platform was designed to provide an engaging user experience while ensuring smooth video uploads and real-time interactions. React was used for dynamic front-end rendering, and MySQL was optimized to store and retrieve user-generated content efficiently. A scalable architecture was implemented to handle high traffic and concurrent interactions.",
             "challenges": [
@@ -302,13 +300,12 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             "longDescription": "iLrestro is a full-featured restaurant management solution with a vendor-driven marketplace model. The platform consists of an admin panel, where vendors can register and manage their restaurants, a customer mobile app for ordering, and a robust backend handling restaurant data, order processing, and inventory tracking. The admin panel allows vendors to manage menus, track sales, and handle customer queries, while customers enjoy a smooth ordering experience with real-time order tracking. The application is built using React for the web interface, Flutter for the mobile app, and Node.js with Express for API development.",
             "technologies": ["React", "Flutter", "Node.js", "Express", "MySQL"],
             "demoLink": "#",
-            "codeLink": "https://github.com/yourusername/ilrestro",
+            "codeLink": "",
             "featured": false,
             "completedDate": "2024",
             "screenshots": [
-                "app/images/projects/ilrestro/ilrestro1.png",
-                "app/images/projects/ilrestro/ilrestro2.png",
-                "app/images/projects/ilrestro/ilrestro3.png"
+                "app/images/projects/ilrestro/restro1.png",
+                "app/images/projects/ilrestro/restro2.png"
             ],
             "approach": "The platform was designed to cater to restaurant vendors and customers through a modular and scalable system. The admin panel was built with React for seamless vendor management, the customer app was developed with Flutter for cross-platform compatibility, and the backend APIs were structured with Node.js and Express for fast and reliable data handling. Real-time order tracking was implemented using WebSockets.",
             "challenges": [
@@ -349,14 +346,13 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             "info": "BhimSup is a dedicated customer support platform for BHIM UPI users, designed to assist with transaction issues, dispute resolution, and general inquiries. The platform integrates real-time customer service support, enabling users to track complaints, communicate with representatives, and resolve payment-related concerns efficiently.",
             "longDescription": "BhimSup is a fintech support application tailored for BHIM UPI users, offering a streamlined way to address transaction issues and provide customer assistance. It features an intuitive user interface built with React, a backend powered by Node.js and Express, and a MySQL database for storing user queries and resolutions. The system includes automated ticket management, chatbot integration for common queries, and live support for urgent matters. Users can check transaction statuses, raise disputes, and receive real-time updates on their concerns.",
             "technologies": ["React", "Node.js", "Express", "MySQL"],
-            "demoLink": "#",
-            "codeLink": "https://github.com/yourusername/bhimsup",
+            "demoLink": "",
+            "codeLink": "",
             "featured": false,
             "completedDate": "2024",
             "screenshots": [
-                "app/images/projects/bhimsup/bhimsup1.png",
-                "app/images/projects/bhimsup/bhimsup2.png",
-                "app/images/projects/bhimsup/bhimsup3.png"
+                "app/images/projects/bhimsup/bhim1.png",
+                "app/images/projects/bhimsup/bhim2.png"
             ],
             "approach": "The BhimSup platform was built with a customer-first approach, integrating automation and human support for seamless resolution of UPI-related issues. The backend system was structured to handle high volumes of queries efficiently, with AI-powered chatbot assistance for instant responses and escalation workflows for complex cases.",
             "challenges": [
@@ -398,13 +394,14 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             "longDescription": "Buty Public School Management System is a full-featured web application designed to enhance the efficiency of academic management. It includes a student portal for accessing timetables, assignments, and grades, a teacher portal for managing lessons and attendance, and an admin dashboard for overseeing school operations. Built using React for a responsive UI and Node.js with Express for a scalable backend, the system ensures smooth data handling with MySQL as the database.",
             "technologies": ["React", "Node.js", "Express", "MySQL"],
             "demoLink": "#",
-            "codeLink": "https://github.com/yourusername/buty-school",
+            "codeLink": "",
             "featured": false,
             "completedDate": "2024",
             "screenshots": [
                 "app/images/projects/buty/buty1.png",
                 "app/images/projects/buty/buty2.png",
-                "app/images/projects/buty/buty3.png"
+                "app/images/projects/buty/buty3.png",
+                "app/images/projects/buty/buty4.png"
             ],
             "approach": "The Buty Public School Management System was developed with a user-friendly interface to simplify daily administrative tasks. The backend was optimized for handling a high volume of student and teacher records efficiently. Security measures such as role-based access control and encrypted student data storage were implemented to ensure compliance with educational standards.",
             "challenges": [
@@ -443,9 +440,9 @@ app.service('PortfolioDataService', ['$rootScope', function($rootScope) {
             "description": "Next.js + Spring Boot + PostgreSQL",
             "info": "Lorraine Music App is a student progress tracking portal designed for a music training organization. The platform allows schools to monitor students' academic performance alongside their music learning journey. It includes role-based access for principals, teachers, and administrators to manage schools, classes, subjects, exams, and results efficiently.",
             "longDescription": "Lorraine Music App is a comprehensive educational platform that integrates music training with academic performance tracking. Schools can add classes, assign subjects, create exams, upload exam papers, and enter results to evaluate student progress. The system provides insightful analytics to assess the impact of music learning on academic growth. Developed using Next.js for a dynamic frontend and Spring Boot for a scalable backend, it ensures data integrity with PostgreSQL.",
-            "technologies": ["Next.js", "Spring Boot", "PostgreSQL", "Docker"],
+            "technologies": ["Next", "Java", "Spring Boot", "PostgreSQL", "Docker"],
             "demoLink": "#",
-            "codeLink": "https://github.com/yourusername/lorraine-music",
+            "codeLink": "",
             "featured": true,
             "completedDate": "2024",
             "screenshots": [

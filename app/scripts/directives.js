@@ -267,32 +267,22 @@ app.directive('circularProgress', ['$timeout', function($timeout) {
             duration: '@'
         },
         template: '<div class="circular-progress">' +
-                    '<svg></svg>' +
+                    '<svg viewBox="0 0 {{size}} {{size}}"></svg>' +
                     '<div class="progress-text">{{progress}}%</div>' +
                   '</div>',
         link: function(scope, element, attrs) {
-            var size = parseInt(scope.size) || 100;
-            var strokeWidth = parseInt(scope.strokeWidth) || 8;
-            var circleColor = scope.circleColor || '#e0e0e0';
-            var progressColor = scope.progressColor || '#e74c3c';
+            var size = parseInt(scope.size) || 500;
+            var strokeWidth = parseInt(scope.strokeWidth) || 25;
+            var circleColor = scope.circleColor || 'rgba(52, 152, 219, 0.1)';
+            var progressColor = scope.progressColor || '#3498db';
             var textColor = scope.textColor || '#333';
             var duration = parseInt(scope.duration) || 1500;
-            
-            // Set container size
-            element.css({
-                width: size + 'px',
-                height: size + 'px'
-            });
             
             // Set text color
             element.find('.progress-text').css('color', textColor);
             
             // Create SVG elements
             var svg = element.find('svg');
-            svg.attr({
-                width: size,
-                height: size
-            });
             
             var radius = (size / 2) - (strokeWidth / 2);
             var circumference = 2 * Math.PI * radius;

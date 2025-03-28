@@ -323,11 +323,11 @@ body:not(.home-active) .view-container {
 }
 
 .skill-category {
-    margin-bottom: 4rem;
+    margin-bottom: 3.5rem;
 }
 
 .category-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
@@ -335,7 +335,7 @@ body:not(.home-active) .view-container {
 
 .skill-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -345,10 +345,30 @@ body:not(.home-active) .view-container {
     align-items: center;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 1.5rem;
-    transition: var(--transition);
+    border-radius: 10px;
+    padding: 1.8rem 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-item:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--secondary-color);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.5s ease;
+}
+
+.skill-item:hover:before {
+    transform: scaleX(1);
 }
 
 .skill-item:hover {
@@ -358,23 +378,31 @@ body:not(.home-active) .view-container {
 }
 
 .skill-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2.8rem;
+    margin-bottom: 1.2rem;
     color: var(--secondary-color);
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover .skill-icon {
+    transform: scale(1.2);
 }
 
 .skill-name {
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
 }
 
 .skill-level {
     width: 100%;
-    height: 6px;
+    height: 8px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     position: relative;
     overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .skill-progress {
@@ -382,9 +410,181 @@ body:not(.home-active) .view-container {
     left: 0;
     top: 0;
     height: 100%;
+    width: 0;
     background-color: var(--secondary-color);
     border-radius: 10px;
-    transition: width 1.5s ease-in-out;
+    transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.skill-percent {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+/* Skills diagram - circular progress */
+.skill-diagram {
+    position: relative;
+    margin: 0 auto;
+    width: 350px;
+    height: 350px;
+    max-width: 100%;
+}
+
+.circular-progress {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circular-progress svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.circular-progress .progress-text {
+    position: relative;
+    z-index: 2;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 60px; /* Add space below the percentage */
+}
+
+.progress-text {
+    margin-top: 50px;
+}
+
+.skill-chart-text {
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 80%; /* Reduce width to fit better inside the circle */
+    margin-top: 60px;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.skill-chart-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.1rem;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.skill-chart-text p {
+    font-size: 1.1rem;
+    margin-top: 0;
+    opacity: 0.9;
+    color: #333;
+}
+
+/* Skills Categories Section */
+.skills-categories {
+    background-color: var(--dark-color);
+    color: #fff;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* Professional Skills */
+.professional-skills {
+    background-color: #f8f9fa;
+    padding: 4rem 0;
+}
+
+.skill-card {
+    display: flex;
+    align-items: flex-start;
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    height: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card-icon {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    border-radius: 50%;
+    background-color: rgba(52, 152, 219, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.skill-card-content h4 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.skill-card-content p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Development Process */
+.dev-process {
+    background-color: #2c3e50;
+    padding: 4rem 0;
+}
+
+.process-step {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.process-step:hover {
+    transform: translateY(-10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.process-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    opacity: 0.5;
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.process-step h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.process-step p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 /* Projects Section */
@@ -1636,3 +1836,35 @@ textarea.form-control {
 .back-to-projects .text-muted {
     font-size: 1.1rem;
 } 
+
+.privacy-message-fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+/* Media queries for skill diagram */
+@media (max-width: 576px) {
+    .skill-diagram {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .circular-progress .progress-text {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+    
+    .skill-chart-text h3 {
+        font-size: 1.2rem;
+    }
+    
+    .skill-chart-text p {
+        font-size: 1rem;
+    }
+}
+  

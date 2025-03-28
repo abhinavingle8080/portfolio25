@@ -237,6 +237,22 @@ app.run(['$rootScope', function($rootScope) {
                 "Fee management"
             ],
             liveLink: "#"
+        },
+        {
+            id: "7",
+            title: "BhimSup App",
+            description: "BhimSup is a dedicated customer support platform for BHIM UPI users, designed to assist with transaction issues, dispute resolution, and general inquiries.",
+            shortDescription: "React + Node + Express + MySQL",
+            imageSrc: "app/images/projects/bhimsup.svg",
+            technologies: ["React", "Node.js", "Express", "MySQL", "JWT", "Socket.io"],
+            features: [
+                "Real-time customer support",
+                "Transaction status tracking",
+                "Dispute resolution",
+                "Secure authentication",
+                "Live chat support"
+            ],
+            liveLink: ""
         }
     ];
 

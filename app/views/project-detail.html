@@ -30,6 +30,8 @@
             ng-href="{{project.demoLink}}"
             class="btn btn-sm btn-light"
             target="_blank"
+            ng-disabled="!project.demoLink"
+            ng-class="{'disabled': !project.demoLink}"
           >
             <i class="fas fa-external-link-alt"></i> Live Demo
           </a>
@@ -118,7 +120,7 @@
         </div> -->
 
     <!-- Screenshots & Media -->
-    <div class="row mb-5" data-aos="fade-up">
+    <div class="row mb-5" data-aos="fade-up" ng-if="project.screenshots && project.screenshots.length">
       <div class="col-12">
         <h2 class="section-title">Screenshots & Media</h2>
         <div class="project-media">
@@ -142,7 +144,7 @@
                     <source ng-src="{{screenshot.url}}" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
-
+    
                   <!-- Otherwise, render as an image -->
                   <img
                     ng-if="!screenshot.isVideo"
@@ -162,6 +164,7 @@
         </div>
       </div>
     </div>
+    
 
     <!-- Development Process -->
     <div class="row mb-5" data-aos="fade-up">
@@ -195,7 +198,7 @@
     </div>
 
     <!-- Live Demo & Code Repository -->
-    <div class="row mb-5" data-aos="fade-up">
+    <div class="row mb-5" data-aos="fade-up" ng-if="project.demoLink">
       <div class="col-12 text-center">
         <h2 class="section-title">Live Demo</h2>
         <div class="project-links d-flex justify-content-center">
@@ -204,11 +207,24 @@
             class="btn btn-secondary btn-lg"
             target="_blank"
           >
-            <i class="fab fa-github"></i> View Live Demo
+            <i class="fas fa-external-link-alt"></i> View Live Demo
           </a>
         </div>
       </div>
     </div>
+    
+    <!-- Show alternative UI when demo link is not available -->
+    <div class="row mb-5" data-aos="fade-up" ng-if="!project.demoLink">
+      <div class="col-12 text-center">
+        <h2 class="section-title">Live Demo</h2>
+        <div class="project-links d-flex justify-content-center">
+          <a class="btn btn-secondary btn-lg disabled">
+            <i class="fas fa-lock"></i> Not Available
+          </a>
+        </div>
+      </div>
+    </div>
+    
 
     <!-- Role & Contributions -->
     <div class="row mb-5" data-aos="fade-up">
