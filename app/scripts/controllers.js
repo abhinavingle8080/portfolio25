@@ -36,6 +36,18 @@ app.controller('HomeController', ['$scope', '$timeout', 'portfolioService', 'Por
     // Get projects from portfolio service
     $scope.projects = PortfolioDataService.projects;
     
+    // Animate skill progress bars
+    $scope.animateSkills = function() {
+        $timeout(function() {
+            angular.forEach(document.querySelectorAll('.skill-progress'), function(element, index) {
+                var level = element.getAttribute('data-level');
+                $timeout(function() {
+                    element.style.width = level + '%';
+                }, 100 * index);
+            });
+        }, 500);
+    };
+    
     // Initialize 3D Background with three.js
     $scope.init3DBackground = function() {
         var container = document.getElementById('hero-bg');
@@ -253,7 +265,7 @@ app.controller('SkillsController', ['$scope', '$timeout', function($scope, $time
             name: 'Database & DevOps',
             skills: [
                 { name: 'MySQL', level: 85, icon: 'fas fa-database' },
-                { name: 'MongoDB', level: 80, icon: 'fas fa-leaf' },
+                { name: 'MongoDB', level: 80, icon: 'fas fa-database' },
                 { name: 'PostgreSQL', level: 75, icon: 'fas fa-database' },
                 { name: 'Docker', level: 80, icon: 'fab fa-docker' },
                 { name: 'Kubernetes', level: 70, icon: 'fas fa-dharmachakra' },
@@ -262,17 +274,55 @@ app.controller('SkillsController', ['$scope', '$timeout', function($scope, $time
         }
     ];
     
-    // Animate skill progress bars
+    // Animate skill progress bars with improved animation
     $scope.animateSkills = function() {
         $timeout(function() {
-            angular.forEach(document.querySelectorAll('.skill-progress'), function(element, index) {
-                var level = element.getAttribute('data-level');
-                $timeout(function() {
-                    element.style.width = level + '%';
-                }, 100 * index);
+            // First reset all progress bars to 0 width
+            angular.forEach(document.querySelectorAll('.skill-progress'), function(element) {
+                element.style.width = '0%';
             });
-        }, 500);
+            
+            // Then animate them one by one with proper delay
+            $timeout(function() {
+                angular.forEach(document.querySelectorAll('.skill-progress'), function(element, index) {
+                    var level = element.getAttribute('data-level');
+                    $timeout(function() {
+                        element.style.width = level + '%';
+                    }, 60 * index);
+                });
+            }, 200);
+        }, 300);
     };
+    
+    // Initialize AOS animations
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: false,
+        mirror: false,
+        offset: 50
+    });
+    
+    // Initialize animation on page load
+    $timeout(function() {
+        $scope.animateSkills();
+    }, 300);
+    
+    // Add event listener to run animations when scrolled into view
+    document.addEventListener('scroll', function() {
+        var skillsSection = document.querySelector('.skills-categories');
+        if (skillsSection) {
+            var rect = skillsSection.getBoundingClientRect();
+            var isInView = (
+                rect.top >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+            );
+            
+            if (isInView) {
+                $scope.animateSkills();
+            }
+        }
+    }, { passive: true });
 }]);
 
 /**
@@ -360,9 +410,9 @@ app.controller('ProjectsController', ['$scope', 'PortfolioDataService', function
 /**
  * Contact Controller
  */
-app.controller('ContactController', ['$scope', '$window', '$timeout', 'PortfolioDataService', function($scope, $window, $timeout, PortfolioDataService) {
-    // Initialize contact form
-    $scope.contactForm = {
+app.controller('ContactController', ['$scope', '$window', '$timeout', 'PortfolioDataService', 'ContactService', function($scope, $window, $timeout, PortfolioDataService, ContactService) {
+    // Initialize form data model
+    $scope.formData = {
         name: '',
         email: '',
         subject: '',
@@ -371,32 +421,45 @@ app.controller('ContactController', ['$scope', '$window', '$timeout', 'Portfolio
     
     // Form submission
     $scope.submitForm = function() {
-        if ($scope.contactForm.$invalid) {
+        if (!$scope.contactForm.$valid) {
             // Form is invalid
             return;
         }
         
-        // You would normally send the form data to your backend here
-        // This is just a simulation for demo purposes
+        // Set loading state
         $scope.loading = true;
         
-        $timeout(function() {
-            $scope.loading = false;
-            $scope.success = true;
-            
-            // Reset form after successful submission
-            $scope.contactForm = {
-                name: '',
-                email: '',
-                subject: '',
-                message: ''
-            };
-            
-            // Clear success message after 5 seconds
-            $timeout(function() {
-                $scope.success = false;
-            }, 5000);
-        }, 1500);
+        // Send form data to the server via ContactService
+        ContactService.sendContactForm($scope.formData)
+            .then(function(response) {
+                $scope.loading = false;
+                $scope.success = true;
+                
+                // Reset form after successful submission
+                $scope.formData = {
+                    name: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                };
+                $scope.contactForm.$setPristine();
+                $scope.contactForm.$setUntouched();
+                
+                // Clear success message after 5 seconds
+                $timeout(function() {
+                    $scope.success = false;
+                }, 5000);
+            })
+            .catch(function(error) {
+                $scope.loading = false;
+                $scope.error = true;
+                $scope.errorMessage = error.data?.message || 'Failed to send your message. Please try again later.';
+                
+                // Clear error message after 5 seconds
+                $timeout(function() {
+                    $scope.error = false;
+                }, 5000);
+            });
     };
     
     // Get contact information from portfolio data
@@ -414,11 +477,15 @@ app.controller('ContactController', ['$scope', '$window', '$timeout', 'Portfolio
  * Project Detail Controller
  */
 app.controller('ProjectDetailController', ['$scope', '$routeParams', '$location', 'PortfolioDataService', '$timeout', '$sce', function($scope, $routeParams, $location, PortfolioDataService, $timeout, $sce) {
-    // Get project ID from route params and convert to number
-    const projectId = parseInt($routeParams.id);
+    // Get project ID from route params
+    const projectId = $routeParams.id;
     
-    // Find project in the projects array
-    $scope.project = PortfolioDataService.projects.find(project => project.id === projectId);
+    // Find project in the projects array by checking both string and number IDs
+    $scope.project = PortfolioDataService.projects.find(project => 
+        project.id === parseInt(projectId) || 
+        project.id === projectId || 
+        project.id.toString() === projectId
+    );
     
     // If project not found, redirect to projects page
     if (!$scope.project) {

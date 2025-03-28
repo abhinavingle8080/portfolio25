@@ -377,4 +377,14 @@ app.service('portfolioService', ['PortfolioDataService', function(PortfolioDataS
     
     // Other portfolio data can be added here
     service.personalInfo = PortfolioDataService.personalInfo;
+}]);
+
+// Contact Service - Handles contact form submissions
+app.service('ContactService', ['$http', function($http) {
+    var service = this;
+    
+    // Send contact form data to server
+    service.sendContactForm = function(formData) {
+        return $http.post('/api/contact', formData);
+    };
 }]); 

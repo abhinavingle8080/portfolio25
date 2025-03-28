@@ -3,176 +3,280 @@
 
 <!-- Projects Page Header -->
 <section class="page-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h1 class="display-4" data-aos="fade-up">My Projects</h1>
-                <p class="lead" data-aos="fade-up" data-aos-delay="200">Explore my portfolio of projects showcasing my skills in Java, Node.js, and React.</p>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1 class="display-4" data-aos="fade-up">My Projects</h1>
+        <p class="lead" data-aos="fade-up" data-aos-delay="200">
+          Explore my portfolio of projects showcasing my skills in Java,
+          Node.js, and React.
+        </p>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Projects Filters -->
 <section class="project-filter-section py-5">
-    <div class="container">
-        <div class="project-filters" data-aos="fade-up">
-            <button class="filter-btn" ng-class="{'active': activeFilter === filter}" ng-repeat="filter in filters" ng-click="setFilter(filter)">
-                {{filter}}
-            </button>
+  <div class="container">
+    <div class="project-filters" data-aos="fade-up">
+      <button
+        class="filter-btn"
+        ng-class="{'active': activeFilter === filter}"
+        ng-repeat="filter in filters"
+        ng-click="setFilter(filter)"
+      >
+        {{filter}}
+      </button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      <div
+        class="project-card"
+        ng-repeat="project in projects"
+        ng-if="isVisible(project)"
+        data-aos="fade-up"
+        data-aos-delay="{{$index * 100}}"
+      >
+        <div class="project-image">
+          <img ng-src="{{project.image}}" alt="{{project.title}}" />
         </div>
-        
-        <!-- Projects Grid -->
-        <div class="projects-grid">
-            <div class="project-card" ng-repeat="project in projects" ng-if="isVisible(project)" data-aos="fade-up" data-aos-delay="{{$index * 100}}">
-                <div class="project-image">
-                    <img ng-src="{{project.image}}" alt="{{project.title}}">
-                </div>
-                <span class="project-category">{{project.category}}</span>
-                <div class="project-content">
-                    <h3 class="project-title">{{project.title}}</h3>
-                    <p class="project-description">{{project.description || project.longDescription}}</p>
-                    <div class="project-techs">
-                        <span class="project-tech" ng-repeat="tech in project.technologies | limitTo:4">{{tech}}</span>
-                        <span class="project-tech more-tech" ng-if="project.technologies.length > 4">+{{project.technologies.length - 4}}</span>
-                    </div>
-                    <div class="">
-                        <a ng-href="{{project.demoLink}}" class="project-link view-link" target="_blank"><i class="fas fa-eye"></i> View</a>
-                        <a href="#!/projects/{{project.id}}" class="project-link code-link"><i class="fas fa-code"></i> Details</a>
-                    </div>
-                </div>
-            </div>
+        <span class="project-category">{{project.category}}</span>
+        <div class="project-content">
+          <h3 class="project-title">{{project.title}}</h3>
+          <p class="project-description">
+            {{project.description || project.longDescription}}
+          </p>
+          <div class="project-techs">
+            <span
+              class="project-tech"
+              ng-repeat="tech in project.technologies | limitTo:4"
+              >{{tech}}</span
+            >
+            <span
+              class="project-tech more-tech"
+              ng-if="project.technologies.length > 4"
+              >+{{project.technologies.length - 4}}</span
+            >
+          </div>
+          <div>
+            <a
+              ng-href="{{project.demoLink}}"
+              class="project-link view-link"
+              target="_blank"
+              ng-class="{'disabled' : !project.demoLink}"
+            >
+              <i class="fas" ng-class="{'fa-eye': project.demoLink, 'fa-lock': !project.demoLink}"></i>
+              View
+            </a>
+            
+            <a href="#!/projects/{{project.id}}" class="project-link code-link">
+              <i class="fas fa-code"></i> Details
+            </a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-dark text-light">
+    <div class="container">
+        <div class="row h-100">     
+            <br />
         </div>
     </div>
 </section>
 
 <!-- Featured Project Showcase -->
-<section class="featured-project-showcase py-5 bg-light">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Featured Project</h2>
-        
-        <div class="featured-project" data-aos="fade-up" data-aos-delay="200">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div class="featured-project-image">
-                        <img ng-src="{{featuredProject.image}}" alt="{{featuredProject.title}}" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="featured-project-content">
-                        <h3 class="featured-project-title">{{featuredProject.title}}</h3>
-                        <p class="featured-project-category">{{featuredProject.category}}</p>
-                        <p class="featured-project-description">
-                            {{featuredProject.info || featuredProject.longDescription}}
-                        </p>
-                        <h5>Key Features:</h5>
-                        <ul class="featured-project-features">
-                            <li ng-repeat="challenge in featuredProject.challenges">{{challenge.title}}: {{challenge.solution}}</li>
-                            <li ng-if="!featuredProject.challenges || featuredProject.challenges.length === 0">Responsive design across all devices</li>
-                            <li ng-if="!featuredProject.challenges || featuredProject.challenges.length === 0">User-friendly interface with intuitive navigation</li>
-                            <li ng-if="!featuredProject.challenges || featuredProject.challenges.length === 0">Optimized performance for a seamless experience</li>
-                            <li ng-if="!featuredProject.challenges || featuredProject.challenges.length === 0">Secure data handling and storage</li>
-                        </ul>
-                        <div class="featured-project-links">
-                            <a ng-href="{{featuredProject.demoLink}}" class="btn btn-primary" target="_blank"><i class="fas fa-eye"></i> View Demo</a>
-                            <a ng-href="{{featuredProject.codeLink || '#!/projects/' + featuredProject.id}}" class="btn btn-secondary ml-3" target="_blank"><i class="fas fa-code"></i> View Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- <section class="featured-project-showcase py-5 bg-light">
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">Featured Project</h2>
+
+    <div class="featured-project" data-aos="fade-up" data-aos-delay="200">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="featured-project-image">
+            <img
+              ng-src="{{featuredProject.image}}"
+              alt="{{featuredProject.title}}"
+              class="img-fluid"
+            />
+          </div>
         </div>
+        <div class="col-lg-6">
+          <div class="featured-project-content">
+            <h3 class="featured-project-title">{{featuredProject.title}}</h3>
+            <p class="featured-project-category">
+              {{featuredProject.category}}
+            </p>
+            <p class="featured-project-description">
+              {{featuredProject.info || featuredProject.longDescription}}
+            </p>
+            <h5>Key Features:</h5>
+            <ul class="featured-project-features">
+              <li ng-repeat="challenge in featuredProject.challenges">
+                {{challenge.title}}: {{challenge.solution}}
+              </li>
+              <li
+                ng-if="!featuredProject.challenges || featuredProject.challenges.length === 0"
+              >
+                Responsive design across all devices
+              </li>
+              <li
+                ng-if="!featuredProject.challenges || featuredProject.challenges.length === 0"
+              >
+                User-friendly interface with intuitive navigation
+              </li>
+              <li
+                ng-if="!featuredProject.challenges || featuredProject.challenges.length === 0"
+              >
+                Optimized performance for a seamless experience
+              </li>
+              <li
+                ng-if="!featuredProject.challenges || featuredProject.challenges.length === 0"
+              >
+                Secure data handling and storage
+              </li>
+            </ul>
+            <div class="featured-project-links">
+              <a
+                ng-href="{{featuredProject.demoLink}}"
+                class="btn btn-primary"
+                target="_blank"
+                ><i class="fas fa-eye"></i> View Demo</a
+              >
+              <a
+                ng-href="{{featuredProject.codeLink || '#!/projects/' + featuredProject.id}}"
+                class="btn btn-dark rounded-pill ml-3"
+                target="_blank"
+                ><i class="fas fa-code"></i> View Details</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
+  </div>
+</section> -->
 
 <!-- Project Statistics -->
-<section class="project-stats py-5 bg-dark text-light">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-3 col-6 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="100">
-                <div class="stat-item">
-                    <h2 class="stat-number">25+</h2>
-                    <p class="stat-text">Projects Completed</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-6 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="300">
-                <div class="stat-item">
-                    <h2 class="stat-number">15+</h2>
-                    <p class="stat-text">Happy Clients</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="500">
-                <div class="stat-item">
-                    <h2 class="stat-number">10k+</h2>
-                    <p class="stat-text">Lines of Code</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="700">
-                <div class="stat-item">
-                    <h2 class="stat-number">99%</h2>
-                    <p class="stat-text">Client Satisfaction</p>
-                </div>
-            </div>
+<!-- <section class="project-stats py-5 bg-dark text-light">
+  <div class="container">
+    <div class="row text-center">
+      <div
+        class="col-md-3 col-6 mb-4 mb-md-0"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <div class="stat-item">
+          <h2 class="stat-number">25+</h2>
+          <p class="stat-text">Projects Completed</p>
         </div>
+      </div>
+      <div
+        class="col-md-3 col-6 mb-4 mb-md-0"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <div class="stat-item">
+          <h2 class="stat-number">15+</h2>
+          <p class="stat-text">Happy Clients</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="500">
+        <div class="stat-item">
+          <h2 class="stat-number">10k+</h2>
+          <p class="stat-text">Lines of Code</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="700">
+        <div class="stat-item">
+          <h2 class="stat-number">99%</h2>
+          <p class="stat-text">Client Satisfaction</p>
+        </div>
+      </div>
     </div>
-</section>
+  </div>
+</section> -->
 
 <!-- Development Approach -->
 <section class="dev-approach py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
-                <h2 class="section-title text-left">My Development Approach</h2>
-                <p class="lead">I follow a systematic approach to ensure high-quality, scalable solutions.</p>
-                <div class="approach-steps">
-                    <div class="approach-step">
-                        <div class="approach-step-number">1</div>
-                        <div class="approach-step-content">
-                            <h4>Understanding Requirements</h4>
-                            <p>I start by thoroughly understanding the project requirements, user needs, and business goals.</p>
-                        </div>
-                    </div>
-                    <div class="approach-step">
-                        <div class="approach-step-number">2</div>
-                        <div class="approach-step-content">
-                            <h4>Planning & Architecture</h4>
-                            <p>I create a detailed plan and design a robust architecture that will scale with your business.</p>
-                        </div>
-                    </div>
-                    <div class="approach-step">
-                        <div class="approach-step-number">3</div>
-                        <div class="approach-step-content">
-                            <h4>Agile Development</h4>
-                            <p>I develop features iteratively, with regular feedback and adjustments to ensure alignment with goals.</p>
-                        </div>
-                    </div>
-                    <div class="approach-step">
-                        <div class="approach-step-number">4</div>
-                        <div class="approach-step-content">
-                            <h4>Testing & Quality Assurance</h4>
-                            <p>I conduct thorough testing to ensure the solution is robust, secure, and performs optimally.</p>
-                        </div>
-                    </div>
-                    <div class="approach-step">
-                        <div class="approach-step-number">5</div>
-                        <div class="approach-step-content">
-                            <h4>Deployment & Support</h4>
-                            <p>I provide smooth deployment and ongoing support to address any issues and implement improvements.</p>
-                        </div>
-                    </div>
-                </div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+        <h2 class="section-title text-left">My Development Approach</h2>
+        <p class="lead">
+          I follow a systematic approach to ensure high-quality, scalable
+          solutions.
+        </p>
+        <div class="approach-steps">
+          <div class="approach-step">
+            <div class="approach-step-number">1</div>
+            <div class="approach-step-content">
+              <h4>Understanding Requirements</h4>
+              <p>
+                I start by thoroughly understanding the project requirements,
+                user needs, and business goals.
+              </p>
             </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <div class="code-window">
-                    <div class="code-window-header">
-                        <div class="code-window-dots">
-                            <span class="code-window-dot red"></span>
-                            <span class="code-window-dot yellow"></span>
-                            <span class="code-window-dot green"></span>
-                        </div>
-                        <div class="code-window-title">DevelopmentProcess.java</div>
-                    </div>
-                    <div class="code-window-body">
-<pre class="code-content">
+          </div>
+          <div class="approach-step">
+            <div class="approach-step-number">2</div>
+            <div class="approach-step-content">
+              <h4>Planning & Architecture</h4>
+              <p>
+                I create a detailed plan and design a robust architecture that
+                will scale with your business.
+              </p>
+            </div>
+          </div>
+          <div class="approach-step">
+            <div class="approach-step-number">3</div>
+            <div class="approach-step-content">
+              <h4>Agile Development</h4>
+              <p>
+                I develop features iteratively, with regular feedback and
+                adjustments to ensure alignment with goals.
+              </p>
+            </div>
+          </div>
+          <div class="approach-step">
+            <div class="approach-step-number">4</div>
+            <div class="approach-step-content">
+              <h4>Testing & Quality Assurance</h4>
+              <p>
+                I conduct thorough testing to ensure the solution is robust,
+                secure, and performs optimally.
+              </p>
+            </div>
+          </div>
+          <div class="approach-step">
+            <div class="approach-step-number">5</div>
+            <div class="approach-step-content">
+              <h4>Deployment & Support</h4>
+              <p>
+                I provide smooth deployment and ongoing support to address any
+                issues and implement improvements.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="code-window">
+          <div class="code-window-header">
+            <div class="code-window-dots">
+              <span class="code-window-dot red"></span>
+              <span class="code-window-dot yellow"></span>
+              <span class="code-window-dot green"></span>
+            </div>
+            <div class="code-window-title">DevelopmentProcess.java</div>
+          </div>
+          <div class="code-window-body">
+            <pre class="code-content">
 <span class="code-keyword">import</span> java.util.List;
 <span class="code-keyword">import</span> java.util.ArrayList;
 
@@ -220,18 +324,27 @@
     }
 }
 </pre>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Project Inquiry CTA -->
 <section class="project-cta py-5 bg-primary text-light text-center">
-    <div class="container">
-        <h2 data-aos="fade-up">Have a project in mind?</h2>
-        <p class="lead" data-aos="fade-up" data-aos-delay="200">Let's discuss how I can help you bring your ideas to life with my expertise in Java, Node.js, and React.</p>
-        <a href="#!/contact" class="btn btn-light btn-lg mt-4" data-aos="fade-up" data-aos-delay="400">Get In Touch</a>
-    </div>
-</section> 
+  <div class="container">
+    <h2 data-aos="fade-up">Have a project in mind?</h2>
+    <p class="lead" data-aos="fade-up" data-aos-delay="200">
+      Let's discuss how I can help you bring your ideas to life with my
+      expertise in Java, Node.js, and React.
+    </p>
+    <a
+      href="#!/contact"
+      class="btn btn-light btn-lg mt-4"
+      data-aos="fade-up"
+      data-aos-delay="400"
+      >Get In Touch</a
+    >
+  </div>
+</section>

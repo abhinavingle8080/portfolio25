@@ -25,9 +25,11 @@
     "angular-sanitize": "^1.8.3",
     "aos": "^2.3.4",
     "bootstrap": "^4.6.2",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "gsap": "^3.12.4",
     "jquery": "^3.7.1",
+    "nodemailer": "^6.10.0",
     "swiper": "^11.2.6",
     "three": "^0.160.0",
     "typed.js": "^2.1.0"

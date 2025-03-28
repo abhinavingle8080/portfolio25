@@ -1,26 +1,62 @@
 <!-- Include Skills Header -->
 <div ng-include="'app/components/headers/skills-header.html'"></div>
 
-<!-- Skills Page Header -->
-<section class="page-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h1 class="display-4" data-aos="fade-up">My Skills</h1>
-                <p class="lead" data-aos="fade-up" data-aos-delay="200">An overview of my technical skills and expertise in various technologies.</p>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- Skills Page Wrapper -->
+<div ng-controller="SkillsController" ng-init="animateSkills()">
+  
+  <!-- Skills Page Header -->
+  <section class="page-header">
+      <div class="container">
+          <div class="row">
+              <div class="col-12 text-center">
+                  <h1 class="display-4" data-aos="fade-up">My Skills</h1>
+                  <p class="lead" data-aos="fade-up" data-aos-delay="200">An overview of my technical skills and expertise in various technologies.</p>
+              </div>
+          </div>
+      </div>
+  </section>
 
-<!-- Skills Overview -->
+  <!-- Skills Overview -->
+  <!-- <section class="skills-overview py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center" data-aos="fade-up">
+          <p class="lead">
+            With expertise in Java, Node.js, and React, I specialize in building
+            robust, scalable, and user-friendly applications that solve real-world
+            problems.
+          </p>
+          <div class="skill-diagram mt-5 mb-5">
+            <div
+              id="skillChart"
+              circular-progress
+              progress="90"
+              size="500" 
+              stroke-width="25"
+              circle-color="rgba(52, 152, 219, 0.1)"
+              progress-color="#3498db"
+              text-color="#333"
+              duration="1500"
+            ></div>
+            <div class="skill-chart-text">
+              <h3>Full Stack</h3>
+              <p>Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  
+  <!-- Skills Overview -->
 <section class="skills-overview py-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center" data-aos="fade-up">
                 <p class="lead">With expertise in Java, Node.js, and React, I specialize in building robust, scalable, and user-friendly applications that solve real-world problems.</p>
                 <div class="skill-diagram mt-5 mb-5">
-                    <div id="skillChart" circular-progress progress="90" size="200" stroke-width="15" circle-color="rgba(255, 255, 255, 0.1)" progress-color="var(--secondary-color)" text-color="#333"></div>
+                    <div id="skillChart" circular-progress progress="90" size="250" stroke-width="15" circle-color="rgba(255, 255, 255, 0.1)" progress-color="var(--secondary-color)" text-color="#333"></div>                
                     <div class="skill-chart-text">
                         <h3>Full Stack</h3>
                         <p>Developer</p>
@@ -31,148 +67,151 @@
     </div>
 </section>
 
-<!-- Skills Categories -->
-<section class="skills-categories py-5" ng-init="animateSkills()">
-    <div class="container">
-        <div class="skill-category" ng-repeat="category in skillCategories" data-aos="fade-up" data-aos-delay="{{$index * 200}}">
-            <h2 class="category-title">{{category.name}}</h2>
-            
-            <div class="skill-grid">
-                <div class="skill-item" ng-repeat="skill in category.skills" data-aos="zoom-in" data-aos-delay="{{$index * 100}}">
-                    <div class="skill-icon">
-                        <i class="{{skill.icon}}"></i>
-                    </div>
-                    <h5 class="skill-name">{{skill.name}}</h5>
-                    <div class="skill-level">
-                        <div class="skill-progress" data-level="{{skill.level}}"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+  <!-- Skills Categories -->
+  <section class="skills-categories py-5">
+      <div class="container">
+          <div class="skill-category" ng-repeat="category in skillCategories" data-aos="fade-up" data-aos-delay="{{$index * 100}}">
+              <h2 class="category-title">{{category.name}}</h2>
+              
+              <div class="skill-grid">
+                  <div class="skill-item" ng-repeat="skill in category.skills" data-aos="zoom-in" data-aos-delay="{{$index * 50}}">
+                      <div class="skill-icon">
+                          <i class="{{skill.icon}}"></i>
+                      </div>
+                      <h5 class="skill-name">{{skill.name}}</h5>
+                      <div class="skill-level">
+                          <div class="skill-progress" data-level="{{skill.level}}"></div>
+                      </div>
+                      <div class="skill-percent mt-2">{{skill.level}}%</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
 
-<!-- Professional Skills -->
-<section class="professional-skills py-5 bg-light">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Professional Skills</h2>
-        
-        <div class="row mt-5">
-            <div class="col-md-6 mb-4" data-aos="fade-right">
-                <div class="skill-card">
-                    <div class="skill-card-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="skill-card-content">
-                        <h4>Clean Code</h4>
-                        <p>I write clean, maintainable, and efficient code following best practices and design patterns. Code quality is always a top priority in my work.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-6 mb-4" data-aos="fade-left">
-                <div class="skill-card">
-                    <div class="skill-card-icon">
-                        <i class="fas fa-sitemap"></i>
-                    </div>
-                    <div class="skill-card-content">
-                        <h4>System Architecture</h4>
-                        <p>I design scalable and robust system architectures that can handle growth and adapt to changing requirements, with a focus on performance and security.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-6 mb-4" data-aos="fade-right">
-                <div class="skill-card">
-                    <div class="skill-card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="skill-card-content">
-                        <h4>Team Collaboration</h4>
-                        <p>I work effectively in teams, communicate clearly, and share knowledge. I'm experienced in agile methodologies and collaborative development workflows.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-6 mb-4" data-aos="fade-left">
-                <div class="skill-card">
-                    <div class="skill-card-icon">
-                        <i class="fas fa-tasks"></i>
-                    </div>
-                    <div class="skill-card-content">
-                        <h4>Project Management</h4>
-                        <p>I manage projects efficiently, set realistic timelines, prioritize tasks, and ensure timely delivery. I'm skilled at breaking down complex problems into manageable tasks.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-6 mb-4" data-aos="fade-right">
-                <div class="skill-card">
-                    <div class="skill-card-icon">
-                        <i class="fas fa-bug"></i>
-                    </div>
-                    <div class="skill-card-content">
-                        <h4>Problem Solving</h4>
-                        <p>I approach problems methodically, debug effectively, and find elegant solutions. I enjoy tackling challenging technical issues and optimizing code.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-6 mb-4" data-aos="fade-left">
-                <div class="skill-card">
-                    <div class="skill-card-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <div class="skill-card-content">
-                        <h4>Continuous Learning</h4>
-                        <p>I'm dedicated to continuous improvement and staying updated with the latest technologies. I regularly learn new skills and adopt best practices.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+  <!-- Professional Skills -->
+  <section class="professional-skills py-5">
+      <div class="container">
+          <h2 class="section-title text-center mb-5" data-aos="fade-up">Professional Skills</h2>
+          
+          <div class="row mt-4">
+              <div class="col-md-6 mb-4" data-aos="fade-right">
+                  <div class="skill-card">
+                      <div class="skill-card-icon">
+                          <i class="fas fa-code"></i>
+                      </div>
+                      <div class="skill-card-content">
+                          <h4>Clean Code</h4>
+                          <p>I write clean, maintainable, and efficient code following best practices and design patterns. Code quality is always a top priority in my work.</p>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="col-md-6 mb-4" data-aos="fade-left">
+                  <div class="skill-card">
+                      <div class="skill-card-icon">
+                          <i class="fas fa-sitemap"></i>
+                      </div>
+                      <div class="skill-card-content">
+                          <h4>System Architecture</h4>
+                          <p>I design scalable and robust system architectures that can handle growth and adapt to changing requirements, with a focus on performance and security.</p>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="col-md-6 mb-4" data-aos="fade-right">
+                  <div class="skill-card">
+                      <div class="skill-card-icon">
+                          <i class="fas fa-users"></i>
+                      </div>
+                      <div class="skill-card-content">
+                          <h4>Team Collaboration</h4>
+                          <p>I work effectively in teams, communicate clearly, and share knowledge. I'm experienced in agile methodologies and collaborative development workflows.</p>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="col-md-6 mb-4" data-aos="fade-left">
+                  <div class="skill-card">
+                      <div class="skill-card-icon">
+                          <i class="fas fa-tasks"></i>
+                      </div>
+                      <div class="skill-card-content">
+                          <h4>Project Management</h4>
+                          <p>I manage projects efficiently, set realistic timelines, prioritize tasks, and ensure timely delivery. I'm skilled at breaking down complex problems into manageable tasks.</p>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="col-md-6 mb-4" data-aos="fade-right">
+                  <div class="skill-card">
+                      <div class="skill-card-icon">
+                          <i class="fas fa-bug"></i>
+                      </div>
+                      <div class="skill-card-content">
+                          <h4>Problem Solving</h4>
+                          <p>I approach problems methodically, debug effectively, and find elegant solutions. I enjoy tackling challenging technical issues and optimizing code.</p>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="col-md-6 mb-4" data-aos="fade-left">
+                  <div class="skill-card">
+                      <div class="skill-card-icon">
+                          <i class="fas fa-sync-alt"></i>
+                      </div>
+                      <div class="skill-card-content">
+                          <h4>Continuous Learning</h4>
+                          <p>I'm dedicated to continuous improvement and staying updated with the latest technologies. I regularly learn new skills and adopt best practices.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
 
-<!-- Development Process -->
-<section class="dev-process py-5 bg-dark text-light">
-    <div class="container">
-        <h2 class="section-title text-light" data-aos="fade-up">My Development Process</h2>
-        
-        <div class="row mt-5">
-            <div class="col-md-3 col-6 mb-4" data-aos="zoom-in" data-aos-delay="100">
-                <div class="process-step">
-                    <div class="process-number">01</div>
-                    <h4>Research & Planning</h4>
-                    <p>I start with thorough research and planning to understand requirements and define the project scope.</p>
-                </div>
-            </div>
-            
-            <div class="col-md-3 col-6 mb-4" data-aos="zoom-in" data-aos-delay="300">
-                <div class="process-step">
-                    <div class="process-number">02</div>
-                    <h4>Design & Architecture</h4>
-                    <p>I design the system architecture and plan the technical approach, focusing on scalability and maintainability.</p>
-                </div>
-            </div>
-            
-            <div class="col-md-3 col-6 mb-4" data-aos="zoom-in" data-aos-delay="500">
-                <div class="process-step">
-                    <div class="process-number">03</div>
-                    <h4>Development & Testing</h4>
-                    <p>I implement the solution with clean code practices, incorporating unit tests and ensuring quality.</p>
-                </div>
-            </div>
-            
-            <div class="col-md-3 col-6 mb-4" data-aos="zoom-in" data-aos-delay="700">
-                <div class="process-step">
-                    <div class="process-number">04</div>
-                    <h4>Deployment & Review</h4>
-                    <p>I deploy the solution, monitor performance, gather feedback, and make continuous improvements.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+  <!-- Development Process -->
+  <section class="dev-process py-5 bg-dark text-light">
+      <div class="container">
+          <h2 class="section-title text-light text-center mb-5" data-aos="fade-up">My Development Process</h2>
+          
+          <div class="row mt-4">
+              <div class="col-md-3 col-6 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="process-step">
+                      <div class="process-number">01</div>
+                      <h4>Research & Planning</h4>
+                      <p>I start with thorough research and planning to understand requirements and define the project scope.</p>
+                  </div>
+              </div>
+              
+              <div class="col-md-3 col-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                  <div class="process-step">
+                      <div class="process-number">02</div>
+                      <h4>Design & Architecture</h4>
+                      <p>I design the system architecture and plan the technical approach, focusing on scalability and maintainability.</p>
+                  </div>
+              </div>
+              
+              <div class="col-md-3 col-6 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                  <div class="process-step">
+                      <div class="process-number">03</div>
+                      <h4>Development & Testing</h4>
+                      <p>I implement the solution with clean code practices, incorporating unit tests and ensuring quality.</p>
+                  </div>
+              </div>
+              
+              <div class="col-md-3 col-6 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                  <div class="process-step">
+                      <div class="process-number">04</div>
+                      <h4>Deployment & Review</h4>
+                      <p>I deploy the solution, monitor performance, gather feedback, and make continuous improvements.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+</div>
 
 <!-- Certifications & Achievements -->
 <!-- <section class="certifications py-5">
