@@ -3,7 +3,7 @@
 /**
  * Creative Portfolio AngularJS Application
  */
-var app = angular.module('portfolioApp', ['ngRoute']);
+var app = angular.module('portfolioApp', ['ngRoute', 'ngSanitize']);
 
 // Configure routes
 app.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider', function($routeProvider, $locationProvider, $sceDelegateProvider) {
@@ -44,9 +44,12 @@ app.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider', funct
             redirectTo: '/'
         });
     
-    // Use HTML5 history API for clean URLs (without #)
-    $locationProvider.html5Mode(false);
-    $locationProvider.hashPrefix('!');
+    // Use hash-based URLs for maximum compatibility
+    $locationProvider.html5Mode({
+        enabled: false,
+        requireBase: false
+    });
+    $locationProvider.hashPrefix('');
     
     // Configure SCE to whitelist local resources
     $sceDelegateProvider.resourceUrlWhitelist([
