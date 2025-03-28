@@ -44,7 +44,7 @@
     <script src="node_modules/angular-route/angular-route.min.js"></script>
     <script src="node_modules/gsap/dist/gsap.min.js"></script>
     <script src="node_modules/aos/dist/aos.js"></script>
-    <script src="node_modules/typed.js/lib/typed.min.js"></script>
+    <script src="node_modules/typed.js/dist/typed.umd.js"></script>
     <script src="node_modules/three/build/three.min.js"></script>
     <script src="node_modules/swiper/swiper-bundle.min.js"></script>
     
@@ -55,21 +55,18 @@
     <script src="app/scripts/portfolio-data.js"></script>
     <script src="app/scripts/services.js"></script>
     
-    <!-- Font Awesome -->
-    <!-- Removed old Font Awesome script -->
-
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            new Typed("#typed-text", {
-                strings: ["The only A.I. you will ever need"], // Text to type
-                typeSpeed: 50, // Speed of typing
-                backSpeed: 25, // Speed of backspacing
-                startDelay: 400, // Delay before typing starts
-                showCursor: true, // Show blinking cursor
-                loop: false // Don't loop
-            });
+            if(document.getElementById("typed-text")) {
+                new Typed("#typed-text", {
+                    strings: ["The only A.I. you will ever need"], // Text to type
+                    typeSpeed: 50, // Speed of typing
+                    backSpeed: 25, // Speed of backspacing
+                    startDelay: 400, // Delay before typing starts
+                    showCursor: true, // Show blinking cursor
+                    loop: false // Don't loop
+                });
+            }
         });
     </script>
 </body>

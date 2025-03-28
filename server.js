@@ -6,12 +6,17 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 const app = express();
 const PORT = process.env.PORT || 3001;
+const isProduction = process.env.NODE_ENV === 'production';
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Serve static files
-app.use(express.static(__dirname));
+// Serve static files from dist folder in production, otherwise serve from root
+if (isProduction) {
+  app.use(express.static(path.join(__dirname, 'dist')));
+} else {
+  app.use(express.static(__dirname));
+}
 
 // Contact form submission endpoint
 app.post('/api/contact', async (req, res) => {
@@ -54,7 +59,11 @@ app.post('/api/contact', async (req, res) => {
 
 // Redirect all other routes to index.html for the SPA
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'index.html'));
+  if (isProduction) {
+    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+  } else {
+    res.sendFile(path.resolve(__dirname, 'index.html'));
+  }
 });
 
 // Start the server
